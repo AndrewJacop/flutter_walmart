@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_walmart/Features/home/persentation/widget/home_body.dart';
 import 'package:flutter_walmart/Features/home/persentation/widget/appbar/appbar.dart';
-import 'package:flutter_walmart/common/widget/custom_head_body.dart';
+import 'package:flutter_walmart/Features/home/persentation/widget/appbar/custom_head_body.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class HomeView extends StatefulWidget {

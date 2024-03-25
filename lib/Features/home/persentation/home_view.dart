@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_walmart/Features/home/persentation/widget/home_body.dart';
-import 'package:flutter_walmart/common/widget/appbar.dart';
+import 'package:flutter_walmart/Features/home/persentation/widget/appbar/appbar.dart';
 import 'package:flutter_walmart/common/widget/custom_head_body.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -33,10 +33,10 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(),
       body: Column(
         children: [
-          HeadBody(),
+          // CustomAppBar(),
+          CustomAppBar(),
           Expanded(
             child: _widgetOptions.elementAt(_selectedIndex),
           ),

@@ -10,23 +10,41 @@ class AdvertisingSection extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 5.0),
       width: double.infinity,
-      child: GridView.count(
-        primary: false,
-        padding: const EdgeInsets.all(0),
-
-        crossAxisCount: 1,
-
-        children: const <Widget>[
-          ItemBanner(
-            imgurl: AssetsData.banr1,
+      child: Column(
+        children: [
+          ItemBanner(imgurl: AssetsData.banr1),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Expanded(
+                flex: 1,
+                child: Column(
+                  children: [
+                    // First item
+                    ItemBanner(imgurl: AssetsData.banr1),
+                    SizedBox(height: 10), // Add some space between items
+                    // Third item
+                    ItemBanner(imgurl: AssetsData.banr3),
+                  ],
+                ),
+              ),
+              SizedBox(width: 10), // Add some space between the columns
+              Expanded(
+                flex: 1,
+                child: Column(
+                  children: [
+                    // Second item
+                    ItemBanner(imgurl: AssetsData.banr2),
+                  ],
+                ),
+              ),
+            ],
           ),
-          ItemBanner(
-            imgurl: AssetsData.banr2,
-          ),
-          ItemBanner(
-            imgurl: AssetsData.banr3,
-          )
         ],
+      ),
+    );
+  }
+}
         // scrollDirection: Axis.vertical,
         // itemCount: 3, // Number of ads/cards
         // itemBuilder: (BuildContext context, int index) {
@@ -43,7 +61,4 @@ class AdvertisingSection extends StatelessWidget {
         //       ),
         //     ],
         //   );
-      ),
-    );
-  }
-}
+      

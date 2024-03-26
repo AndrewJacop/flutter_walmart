@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
 class ItemBanner extends StatelessWidget {
-  const ItemBanner({Key? key, required this.imgurl}) : super(key: key);
   final String imgurl;
+
+  const ItemBanner({Key? key, required this.imgurl}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,21 +14,20 @@ class ItemBanner extends StatelessWidget {
       child: Stack(
         children: [
           AspectRatio(
-            aspectRatio: 18 / 18, // Adjust the aspect ratio as needed
+            aspectRatio: 16 / 9,
             child: Image.network(
               imgurl,
-              fit: BoxFit.fill,
+              fit: BoxFit.cover,
             ),
           ),
           Positioned(
-            bottom: 10.0, // Adjust as needed
-            left: 20.0, // Adjust as needed
+            bottom: 10.0,
+            left: 20.0,
             child: ElevatedButton(
-              // Add your button here
               onPressed: () {
                 // Handle button press
               },
-              child: Text('Your Button'),
+              child: Text('Shop now'),
             ),
           ),
         ],

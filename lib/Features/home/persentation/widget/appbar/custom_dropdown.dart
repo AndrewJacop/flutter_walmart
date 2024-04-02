@@ -108,19 +108,23 @@ class _MenuWidgetState extends State<MenuWidget> {
                 children: [
                   GestureDetector(
                     onTap: widget.ontap,
-                    child: const Text(
-                      "Howe do you want items ?",
-                      style: Styles.textStyle25,
+                    child: const Row(
+                      children: [
+                        Text(
+                          "Howe do you want items ?",
+                          style: Styles.textStyle25,
+                        ),
+                        SizedBox(
+                          width: 25,
+                        ),
+                        Icon(
+                          Icons.keyboard_arrow_up,
+                          size: 30, // Adjust the size as needed
+                          color: Colors.white, // Adjust the color as needed
+                        )
+                      ],
                     ),
                   ),
-                  SizedBox(
-                    width: 25,
-                  ),
-                  Icon(
-                    Icons.keyboard_arrow_up,
-                    size: 30, // Adjust the size as needed
-                    color: Colors.white, // Adjust the color as needed
-                  )
                 ],
               ),
               const Spacer(

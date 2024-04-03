@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_walmart/Features/home/persentation/widget/home_body.dart';
-import 'package:flutter_walmart/Features/home/persentation/widget/appbar/appbar.dart';
 import 'package:flutter_walmart/Features/home/persentation/widget/appbar/custom_head_body.dart';
+import 'package:flutter_walmart/Features/mylists/view/my_list_screen.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class HomeView extends StatefulWidget {
-  const HomeView({Key? key}) : super(key: key);
+  const HomeView({super.key});
 
   @override
   State<HomeView> createState() => _HomeViewState();
@@ -17,7 +17,7 @@ class _HomeViewState extends State<HomeView> {
   static final List<Widget> _widgetOptions = <Widget>[
     // Replace this with your actual home content widget
     const AdvertisingSection(), // Example placeholder for search page
-    const Text('Myfiles'), // Example placeholder for cart page
+    const MyListsScreen(), // Example placeholder for cart page
     const Text('Search'),
     const Text('Services'), // Example placeholder for cart page
     const Text('Account'),

@@ -6,15 +6,15 @@ class CustomButton extends StatelessWidget {
   final double width;
 
   const CustomButton({
-    Key? key,
+    super.key,
     required this.title,
     this.width =
         double.infinity, // Default width is set to fill available space
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: width,
       child: ElevatedButton(
         onPressed: () {
@@ -23,13 +23,13 @@ class CustomButton extends StatelessWidget {
         style: ButtonStyle(
           backgroundColor: MaterialStateProperty.all(Colors.white),
           padding: MaterialStateProperty.all(
-            EdgeInsets.symmetric(horizontal: 22.0, vertical: 7.0),
+            const EdgeInsets.symmetric(horizontal: 22.0, vertical: 7.0),
           ),
           shape: MaterialStateProperty.all(
             RoundedRectangleBorder(
               borderRadius:
                   BorderRadius.circular(20.0), // Adjust the radius as needed
-              side: BorderSide(
+              side: const BorderSide(
                 color: Colors.black, // Define border color
                 width: 1.0, // Define border width
               ),

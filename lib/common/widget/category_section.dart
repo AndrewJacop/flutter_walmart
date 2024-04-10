@@ -1,11 +1,14 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_walmart/Features/Product/data/model/Product_model.dart';
+import 'package:flutter_walmart/common/widget/custom_button.dart';
 import 'package:flutter_walmart/common/widget/product_subcategory.dart';
+import 'package:flutter_walmart/core/utils/styles.dart';
 
-class SubcategorySection extends StatelessWidget {
+class categorySection extends StatelessWidget {
   final String categoryname;
   final String subcategories;
-  const SubcategorySection(
+  const categorySection(
       {Key? key,
       required this.productsitems,
       required this.categoryname,
@@ -18,13 +21,16 @@ class SubcategorySection extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.all(8.0),
       child: SizedBox(
-        height: 426,
+        height: 380,
         width: 389,
         child: Column(
           children: [
             HeadSection(
               catname: subcategories,
               subcat: categoryname,
+            ),
+            FooterSection(
+              productsitems: productsitems,
             ),
             FooterSection(
               productsitems: productsitems,
@@ -46,7 +52,7 @@ class FooterSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 343,
+      height: 150,
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         child: Row(
@@ -55,7 +61,7 @@ class FooterSection extends StatelessWidget {
               width: MediaQuery.of(context).size.width,
               child: ListView.builder(
                 itemBuilder: (context, index) =>
-                    SubProductCard(product: productsitems[index]),
+                    ProductCard(product: productsitems[index]),
                 itemCount: productsitems.length,
                 scrollDirection: Axis.horizontal,
               ),
@@ -120,6 +126,55 @@ class HeadSection extends StatelessWidget {
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class ProductCard extends StatelessWidget {
+  final ProductsModel product;
+
+  const ProductCard({
+    Key? key,
+    required this.product,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () {
+        // Handle tap
+      },
+      child: Container(
+        width: 80,
+        height: 100, // Adjust height as needed
+
+        child: Padding(
+          padding: const EdgeInsets.only(left: 8, right: 8),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(
+                child: AspectRatio(
+                    aspectRatio: 11 / 16,
+                    child: CircleAvatar(
+                      radius: 90,
+                      child: CachedNetworkImage(
+                        placeholderFadeInDuration: Duration.zero,
+                        placeholder: (context, url) =>
+                            const CircularProgressIndicator(),
+                        errorWidget: (context, url, error) =>
+                            const Icon(Icons.error),
+                        imageUrl: product.images!.isNotEmpty
+                            ? product.images![0]
+                            : "",
+                        fit: BoxFit.fill,
+                      ),
+                    )),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }

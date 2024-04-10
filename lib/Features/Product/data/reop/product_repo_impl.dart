@@ -1,34 +1,60 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter_walmart/Features/Product/data/model/Product_model.dart';
+import 'package:flutter_walmart/Features/Product/data/reop/product_repo.dart';
 
-import 'package:flutter_walmart/Features/home/data/model/ads_model.dart';
-import 'package:flutter_walmart/Features/home/data/reop/ads_repo.dart';
 import 'package:flutter_walmart/core/utils/api_sevice.dart';
 import 'package:flutter_walmart/core/utils/failures.dart';
 
-class AdsImpl implements AdsRepo {
+class ProductsIml implements ProductsRepo {
   final ApiService apiService;
-  AdsImpl(this.apiService);
+  ProductsIml(this.apiService);
 
   @override
-  Future<Either<Failure, List<AdsModel>>> adslunch() async {
-    var data = await apiService.get(endPoint: 'ads') as List<dynamic>;
-    // print("??????????????????????????????????");
-    // print("?????????????data?????????????????????");
-    // print(data[0]);
+  Future<Either<Failure, List<ProductsModel>>> products() async {
+    var data =
+        await apiService.get(endPoint: 'products?limit=12') as List<dynamic>;
+
+    print(data[0]);
     try {
-      List<AdsModel> adslist = [];
+      List<ProductsModel> prolist = [];
 
       for (var item in data) {
         try {
-          adslist.add(AdsModel.fromJson(item));
+          prolist.add(ProductsModel.fromJson(item));
         } catch (e) {
-          // Handle error if JSON parsing fails for an item
-          // You might want to log or ignore the error here
+          print(e);
         }
       }
 
-      return right(adslist);
+      return right(prolist);
+    } catch (e) {
+      // Handle API call error
+      if (e is DioError) {
+        return left(ServerFailure.fromDioError(e));
+      }
+
+      return left(ServerFailure(e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<ProductsModel>>> subcategory(
+      Map<String, dynamic> query) async {
+    var data =
+        await apiService.get(endPoint: 'products', queryParameters: query);
+
+    print(data[0]);
+    try {
+      List<ProductsModel> Subglist = [];
+
+      for (var item in data) {
+        try {
+          Subglist.add(ProductsModel.fromJson(item));
+        } catch (e) {}
+      }
+
+      return right(Subglist);
     } catch (e) {
       // Handle API call error
       if (e is DioError) {
@@ -68,3 +94,4 @@ class AdsImpl implements AdsRepo {
 //     return left(ServerFailure(e.toString()));
 //   }
 // }
+

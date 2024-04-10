@@ -4,10 +4,12 @@ import 'package:flutter_walmart/core/utils/styles.dart';
 class CustomButton extends StatelessWidget {
   final String title;
   final double width;
+  void Function()? ontap;
 
-  const CustomButton({
+  CustomButton({
     Key? key,
     required this.title,
+    this.ontap,
     this.width =
         double.infinity, // Default width is set to fill available space
   }) : super(key: key);
@@ -17,9 +19,7 @@ class CustomButton extends StatelessWidget {
     return Container(
       width: width,
       child: ElevatedButton(
-        onPressed: () {
-          // Handle button press
-        },
+        onPressed: ontap,
         style: ButtonStyle(
           backgroundColor: MaterialStateProperty.all(Colors.white),
           padding: MaterialStateProperty.all(

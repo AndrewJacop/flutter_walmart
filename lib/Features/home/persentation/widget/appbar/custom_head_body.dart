@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+
 import 'package:flutter_walmart/Features/home/persentation/widget/appbar/custom_dropdown.dart';
 import 'package:flutter_walmart/Features/home/persentation/widget/appbar/custom_seacrch.dart';
 import 'package:flutter_walmart/Features/home/persentation/widget/appbar/appbar.dart';
@@ -52,7 +52,7 @@ class CustomAppBar extends StatelessWidget {
                       height: 30,
                       width: 30,
                       onTap: onTap,
-                      child: const Row(children: [
+                      child: Row(children: [
                         Padding(
                           padding: EdgeInsets.only(left: 10, right: 10),
                           child: CircleAvatar(
@@ -68,11 +68,13 @@ class CustomAppBar extends StatelessWidget {
                         ),
                         Text(
                           "hwo do you want your items",
-                          style: Styles.textStyle14,
+                          style:
+                              Styles.textStyle14.copyWith(color: Colors.white),
                         ),
                         Text(
                           "  | 98754",
-                          style: Styles.textStyle14,
+                          style:
+                              Styles.textStyle14.copyWith(color: Colors.white),
                         ),
                         Spacer(
                           flex: 5,

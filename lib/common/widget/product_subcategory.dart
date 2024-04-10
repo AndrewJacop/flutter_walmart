@@ -1,21 +1,16 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_walmart/Features/Product/data/model/Product_model.dart';
 import 'package:flutter_walmart/common/widget/custom_button.dart';
 import 'package:flutter_walmart/core/utils/styles.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class SubProductCard extends StatelessWidget {
-  final String productId;
-  final String productName;
-  final double price;
-  final double? salePrice;
-  final String? imgurl;
+  final ProductsModel product;
 
   const SubProductCard({
     Key? key,
-    required this.productId,
-    required this.productName,
-    required this.price,
-    this.salePrice,
-    required this.imgurl,
+    required this.product,
   }) : super(key: key);
 
   @override
@@ -35,22 +30,28 @@ class SubProductCard extends StatelessWidget {
             children: [
               SizedBox(
                 child: AspectRatio(
-                  aspectRatio: 11 / 10,
-                  child: Image.network(
-                    imgurl!,
-                  ),
-                ),
+                    aspectRatio: 11 / 10,
+                    child: CachedNetworkImage(
+                      placeholderFadeInDuration: Duration.zero,
+                      placeholder: (context, url) =>
+                          const CircularProgressIndicator(),
+                      errorWidget: (context, url, error) =>
+                          const Icon(Icons.error),
+                      imageUrl:
+                          product.images!.isNotEmpty ? product.images![0] : "",
+                      fit: BoxFit.fill,
+                    )),
               ),
-              SizedBox(height: 8.0),
+              const SizedBox(height: 8.0),
               Text(
-                'Price: \$${price.toStringAsFixed(2)}',
+                'Price: \$${product.originalPrice!}',
                 style: TextStyle(
                   fontSize: 14.0,
                 ),
               ),
-              if (salePrice != null)
+              if (product.discount != 0)
                 Text(
-                  'Sale Price: \$${salePrice!.toStringAsFixed(2)}',
+                  'Sale Price: \$${product.discount!.toStringAsFixed(2)}',
                   style: TextStyle(
                     fontSize: 14.0,
                     color: Colors.red, // Add sale price color
@@ -58,12 +59,13 @@ class SubProductCard extends StatelessWidget {
                 ),
               SizedBox(height: 4.0),
               Text(
-                productName,
+                product.title!,
                 style: Styles.textStyle14,
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
               ),
               CustomButton(
+                ontap: () {},
                 title: "Option",
                 width: 100,
               )

@@ -1,42 +1,24 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_walmart/Features/Product/data/model/Product_model.dart';
+import 'package:flutter_walmart/Features/Product/logic/products_get.dart';
+import 'package:flutter_walmart/Features/Product/logic/subcategory_get.dart';
 import 'package:flutter_walmart/Features/home/data/model/ads_model.dart';
 import 'package:flutter_walmart/Features/home/logic/get_ads.dart';
 import 'package:flutter_walmart/Features/home/persentation/widget/item_banner_body_home.dart';
 import 'package:flutter_walmart/common/widget/cardview.dart';
+import 'package:flutter_walmart/common/widget/category_section.dart';
 import 'package:flutter_walmart/common/widget/subcategory_section.dart';
 import 'package:get/get.dart';
 
 class AdvertisingSection extends StatelessWidget {
   AdvertisingSection({super.key});
   final AdsController adsController = Get.put(AdsController());
+  final ProductsController productsController = Get.put(ProductsController());
+  final SubcategoryController subcategoryController =
+      Get.put(SubcategoryController());
+
   @override
-//   Widget build(BuildContext context) {
-//     return Container(
-//       margin: const EdgeInsets.symmetric(vertical: 5.0),
-//       width: double.infinity,
-//       child: SingleChildScrollView(
-//         child: Padding(
-//           padding: const EdgeInsets.all(8.0),
-//           child: Obx(
-//             () {
-//               final List<AdsModel> adsList = adsController.adsList;
-//               print(adsList);
-//               return Column(
-//                 children: [
-//                   Container(
-//                     height: 100,
-//                     child: Text(adsList[0].title!),
-//                   )
-//                 ],
-//               );
-//             },
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-// }
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 5.0),
@@ -46,6 +28,24 @@ class AdvertisingSection extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: Obx(() {
             final List<AdsModel> adsList = adsController.adsList;
+            final List<ProductsModel> productsList =
+                productsController.productsList;
+            final List<ProductsModel> categoryList =
+                subcategoryController.categoryList;
+            final List<ProductsModel> categoryList2 =
+                subcategoryController.categoryList2;
+            final List<ProductsModel> categoryList3 =
+                subcategoryController.categoryList3;
+
+            if (adsList.isEmpty || productsList.isEmpty) {
+              print("??????????????????????????????????productsList");
+              print(productsList);
+              print("??????????????????????????????????adsList");
+              print(adsList);
+              print("??????????????????????????????????adsList");
+              print(categoryList);
+              return Container(); // Return empty container if either adsList or productsList is empty
+            }
             return Column(
               children: [
                 ItemBanner(
@@ -171,7 +171,11 @@ class AdvertisingSection extends StatelessWidget {
                     ],
                   ),
                 ),
-                const SubcategorySection(),
+                SubcategorySection(
+                  categoryname: "toy",
+                  subcategories: "Celebrate spring with outdoor fun",
+                  productsitems: categoryList,
+                ),
                 ItemBanner(
                   aspectR: 11 / 9,
                   imgurl: adsList[10].imgLink!,
@@ -227,13 +231,27 @@ class AdvertisingSection extends StatelessWidget {
                     ],
                   ),
                 ),
-                const SubcategorySection(),
+                SubcategorySection(
+                  categoryname: "More Sports",
+                  subcategories: "outdoors",
+                  productsitems: categoryList2,
+                ),
                 ItemBanner(
                   aspectR: 9 / 12,
                   imgurl: adsList[15].imgLink!,
                   urlhref: adsList[15].href,
                   shopnow: adsList[15].title!,
                 ),
+                SubcategorySection(
+                  categoryname: "More Super-low Prices",
+                  subcategories: "Get Most Bang For your buck",
+                  productsitems: categoryList3,
+                ),
+                categorySection(
+                  categoryname: "More Super-low Prices",
+                  subcategories: "Get Most Bang For your buck",
+                  productsitems: categoryList3,
+                )
                 // ItemBanner(
                 //   aspectR: 9 / 11,
                 //   imgurl: adsList[16].imgLink!,

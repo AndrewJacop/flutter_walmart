@@ -19,14 +19,20 @@ import 'package:http/http.dart' as http;
 class ApiService {
   final _baseUrl = 'http://10.0.2.2:3000/api/';
 
-  Future<List<dynamic>> get({required String endPoint}) async {
-    var response = await http.get(Uri.parse('$_baseUrl$endPoint'));
+  Future<List<dynamic>> get(
+      {required String endPoint, Map<String, dynamic>? queryParameters}) async {
+    Uri uri = Uri.parse('$_baseUrl$endPoint');
+    if (queryParameters != null && queryParameters.isNotEmpty) {
+      uri = uri.replace(queryParameters: queryParameters);
+    }
+
+    var response = await http.get(uri);
+
     List<dynamic> responseBody = [];
 
     responseBody = json.decode(response.body);
     // If the server returns a 200 OK response, parse the JSON and return it
-    print("????????????????????????????");
-    print(response.body);
+
     return responseBody;
   }
 }

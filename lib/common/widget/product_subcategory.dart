@@ -10,13 +10,13 @@ class SubProductCard extends StatelessWidget {
   final String? imgurl;
 
   const SubProductCard({
-    Key? key,
+    super.key,
     required this.productId,
     required this.productName,
     required this.price,
     this.salePrice,
     required this.imgurl,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,7 @@ class SubProductCard extends StatelessWidget {
       onTap: () {
         // Handle tap
       },
-      child: Container(
+      child: SizedBox(
         width: 200,
         height: 100, // Adjust height as needed
 
@@ -41,29 +41,29 @@ class SubProductCard extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 8.0),
+              const SizedBox(height: 8.0),
               Text(
                 'Price: \$${price.toStringAsFixed(2)}',
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 14.0,
                 ),
               ),
               if (salePrice != null)
                 Text(
                   'Sale Price: \$${salePrice!.toStringAsFixed(2)}',
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 14.0,
                     color: Colors.red, // Add sale price color
                   ),
                 ),
-              SizedBox(height: 4.0),
+              const SizedBox(height: 4.0),
               Text(
                 productName,
                 style: Styles.textStyle14,
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
               ),
-              CustomButton(
+              const CustomButton(
                 title: "Option",
                 width: 100,
               )

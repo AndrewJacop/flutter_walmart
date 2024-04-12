@@ -3,7 +3,6 @@ import 'package:flutter_walmart/Features/mylists/view/widgets/backdrop_card.dart
 import 'package:flutter_walmart/Features/mylists/view/widgets/custom_blue_button.dart';
 import 'package:flutter_walmart/Features/mylists/view/widgets/custom_outline_button.dart';
 import 'package:flutter_walmart/common/widget/feedback_section.dart';
-import 'package:flutter_walmart/common/widget/subcategory_section.dart';
 
 class RegistriesTab extends StatelessWidget {
   const RegistriesTab({super.key});

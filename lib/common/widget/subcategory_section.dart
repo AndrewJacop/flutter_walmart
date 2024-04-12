@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_walmart/common/widget/product_subcategory.dart';
 
 class SubcategorySection extends StatefulWidget {
-  const SubcategorySection({Key? key}) : super(key: key);
+  const SubcategorySection({super.key});
 
   @override
   _SubcategorySectionState createState() => _SubcategorySectionState();
@@ -11,9 +11,9 @@ class SubcategorySection extends StatefulWidget {
 class _SubcategorySectionState extends State<SubcategorySection> {
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: const SizedBox(
+    return const Padding(
+      padding: EdgeInsets.all(8.0),
+      child: SizedBox(
         height: 426,
         width: 389,
         child: Column(
@@ -37,10 +37,10 @@ class FooterSection extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         child: Row(
           children: [
-            Container(
+            SizedBox(
               width: MediaQuery.of(context).size.width,
               child: ListView.builder(
-                itemBuilder: (context, index) => SubProductCard(
+                itemBuilder: (context, index) => const SubProductCard(
                   imgurl:
                       "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcT2CveDtHqPTwST3VbNziXdwJe4dccKKnD8S18nQrLjFodGTF3H",
                   productId: "2177583020",

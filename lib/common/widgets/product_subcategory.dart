@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_walmart/common/widget/custom_button.dart';
+import 'package:flutter_walmart/common/widgets/custom_button.dart';
 import 'package:flutter_walmart/core/utils/styles.dart';
 
 class SubProductCard extends StatelessWidget {

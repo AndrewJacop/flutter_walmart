@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_walmart/Features/mylists/view/widgets/custom_outline_button.dart';
+import 'package:flutter_walmart/common/widgets/custom_outline_button.dart';
 
 class FeedbackSection extends StatelessWidget {
   const FeedbackSection({

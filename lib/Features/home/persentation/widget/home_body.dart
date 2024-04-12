@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_walmart/Features/home/persentation/widget/item_banner_body_home.dart';
-import 'package:flutter_walmart/common/widget/cardview.dart';
-import 'package:flutter_walmart/common/widget/subcategory_section.dart';
+import 'package:flutter_walmart/common/widgets/cardview.dart';
+import 'package:flutter_walmart/common/widgets/subcategory_section.dart';
 
 class AdvertisingSection extends StatelessWidget {
   const AdvertisingSection({super.key});

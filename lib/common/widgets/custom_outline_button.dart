@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_walmart/core/utils/styles.dart';
 
 class CustomOutlinedButton extends StatelessWidget {
   const CustomOutlinedButton({

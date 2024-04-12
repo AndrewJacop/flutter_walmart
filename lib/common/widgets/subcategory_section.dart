@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_walmart/common/widget/product_subcategory.dart';
+import 'package:flutter_walmart/common/widgets/product_subcategory.dart';
 
 class SubcategorySection extends StatefulWidget {
   const SubcategorySection({super.key});

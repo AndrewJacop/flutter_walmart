@@ -1,8 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_walmart/Features/Product/data/model/Product_model.dart';
-import 'package:flutter_walmart/common/widget/custom_button.dart';
-import 'package:flutter_walmart/common/widget/product_subcategory.dart';
 import 'package:flutter_walmart/core/utils/styles.dart';
 
 class categorySection extends StatelessWidget {
@@ -52,7 +50,7 @@ class FooterSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 150,
+      height: 100,
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         child: Row(
@@ -146,8 +144,8 @@ class ProductCard extends StatelessWidget {
         // Handle tap
       },
       child: Container(
-        width: 80,
-        height: 100, // Adjust height as needed
+        width: 100,
+        height: 90, // Adjust height as needed
 
         child: Padding(
           padding: const EdgeInsets.only(left: 8, right: 8),
@@ -158,7 +156,7 @@ class ProductCard extends StatelessWidget {
                 child: AspectRatio(
                     aspectRatio: 11 / 16,
                     child: CircleAvatar(
-                      radius: 90,
+                      radius: 80,
                       child: CachedNetworkImage(
                         placeholderFadeInDuration: Duration.zero,
                         placeholder: (context, url) =>

@@ -21,7 +21,10 @@ class ApiService {
 
   Future<List<dynamic>> get(
       {required String endPoint, Map<String, dynamic>? queryParameters}) async {
+    print("uri????????????????????????");
+    print(Uri.parse('$_baseUrl$endPoint'));
     Uri uri = Uri.parse('$_baseUrl$endPoint');
+
     if (queryParameters != null && queryParameters.isNotEmpty) {
       uri = uri.replace(queryParameters: queryParameters);
     }

@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_walmart/Features/Product/data/model/Product_model.dart';
 import 'package:flutter_walmart/Features/Product/data/reop/product_repo.dart';
+import 'package:flutter_walmart/Features/products_details/data/model/products_detailes.dart';
 
 import 'package:flutter_walmart/core/utils/api_sevice.dart';
 import 'package:flutter_walmart/core/utils/failures.dart';
@@ -64,6 +65,51 @@ class ProductsIml implements ProductsRepo {
       return left(ServerFailure(e.toString()));
     }
   }
+
+  @override
+  Future<Either<Failure, List<ProductsDetailes>>> productsdetailes(
+      String id) async {
+    var data = await apiService.get(endPoint: 'products/details/$id');
+    print("////////////////////////productsid");
+    print(data);
+    try {
+      final List<ProductsDetailes> productsDetailsList =
+          data.map((item) => ProductsDetailes.fromJson(item)).toList();
+      print("////////////////////////ProductsDetailes");
+      print(ProductsDetailes);
+      return right(productsDetailsList);
+    } catch (e) {
+      // Handle API call error
+      if (e is DioError) {
+        return left(ServerFailure.fromDioError(e));
+      }
+
+      return left(ServerFailure(e.toString()));
+    }
+
+    // Check if data is not empty
+    //   if (data.isNotEmpty) {
+    //     // Parse data into ProductsDetailes
+    //     ProductsDetailes productsdetailes = ProductsDetailes.fromJson(data[0]);
+    //     print("////////////////////////productsdetailes id");
+    //     print(productsdetailes.id);
+    //     // Return Right with productsdetailes
+    //     return Right(productsdetailes);
+    //   } else {
+    //     // Return Left with Failure indicating empty response
+    //     return Left(ServerFailure("Empty response"));
+    //   }
+    // } catch (e) {
+    //   print("////////////////////////error e");
+    //   print(e);
+    //   // Handle API call error
+    //   if (e is DioError) {
+    //     return Left(ServerFailure.fromDioError(e));
+    //   }
+    //   // Return Left with Failure indicating generic error
+    //   return Left(ServerFailure(e.toString()));
+    // }
+  }
 }
 
 // @override
@@ -94,4 +140,3 @@ class ProductsIml implements ProductsRepo {
 //     return left(ServerFailure(e.toString()));
 //   }
 // }
-

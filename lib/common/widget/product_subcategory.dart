@@ -1,8 +1,13 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_walmart/Features/Product/data/model/Product_model.dart';
+import 'package:flutter_walmart/Features/Product/presentation/products.dart';
+import 'package:flutter_walmart/Features/products_details/data/model/products_detailes.dart';
+import 'package:flutter_walmart/Features/products_details/logic/get_products_detailes.dart';
 import 'package:flutter_walmart/common/widget/custom_button.dart';
 import 'package:flutter_walmart/core/utils/styles.dart';
+import 'package:get/get.dart';
+
 import 'package:url_launcher/url_launcher.dart';
 
 class SubProductCard extends StatelessWidget {
@@ -16,8 +21,17 @@ class SubProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {
-        // Handle tap
+      onTap: () async {
+        final productsController = Get.put(ProductsidController());
+        await productsController.fetchproductsid(product.id);
+
+        final List<ProductsDetailes> productDetails =
+            productsController.productsid;
+
+        print("////////////////////////productsid");
+        print(productDetails);
+
+        await Get.to(Products(productsid: productDetails[0]));
       },
       child: Container(
         width: 200,

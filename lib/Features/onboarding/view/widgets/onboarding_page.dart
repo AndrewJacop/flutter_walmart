@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_walmart/Features/onboarding/controller/onboarding_controller.dart';
 import 'package:flutter_walmart/common/widgets/custom_blue_button.dart';
+import 'package:flutter_walmart/core/utils/device_utils.dart';
 import 'package:lottie/lottie.dart';
 
 class OnBoardingPage extends StatelessWidget {
@@ -19,25 +20,27 @@ class OnBoardingPage extends StatelessWidget {
     return Column(
       mainAxisSize: MainAxisSize.max,
       children: [
-        const SizedBox(height: 100),
+        SizedBox(height: DeviceUtils.getScreenHeight() * 0.1),
         Lottie.asset(imgLink, height: 400, frameRate: FrameRate.max),
-        const SizedBox(height: 180),
+        SizedBox(height: DeviceUtils.getScreenHeight() * 0.1),
         Text(
           title,
           style: const TextStyle(
               fontSize: 24, color: Colors.black, fontWeight: FontWeight.bold),
         ),
         Padding(
-          padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 50),
+          padding: EdgeInsets.symmetric(
+              vertical: DeviceUtils.getScreenHeight() * 0.02,
+              horizontal: DeviceUtils.getScreenHeight() * 0.05),
           child: Text(
             subTitle,
             style: const TextStyle(fontSize: 18, color: Colors.black),
           ),
         ),
-        const SizedBox(height: 20),
+        SizedBox(height: DeviceUtils.getScreenHeight() * 0.02),
         // button
         CustomBlueButton(title: "Sign in", onPress: () {}),
-        const SizedBox(height: 10),
+        SizedBox(height: DeviceUtils.getScreenHeight() * 0.01),
 
         TextButton(
             onPressed: () => controller.nextPage(),

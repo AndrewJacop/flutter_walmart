@@ -3,7 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_walmart/Features/onboarding/controller/onboarding_controller.dart';
 import 'package:flutter_walmart/Features/onboarding/view/widgets/onboarding_page.dart';
-import 'package:flutter_walmart/common/widgets/custom_blue_button.dart';
+import 'package:flutter_walmart/core/utils/device_utils.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -33,23 +33,25 @@ class OnBoardingScreen extends StatelessWidget {
                     fit: BoxFit.fitHeight,
                   ),
                 ),
-                Lottie.asset("assets/animations/bg.json", height: 500),
-                Container(
-                  width: double.maxFinite,
-                  height: 400,
-                  color: Colors.white,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(30.0),
-                        child: SmoothPageIndicator(
-                            controller: controller.pageController,
-                            count: 3,
-                            onDotClicked: controller.dotNavigationClick),
-                      ),
-                    ],
+                Lottie.asset("assets/animations/bg.json",
+                    height: DeviceUtils.getScreenHeight() * 0.5),
+                Expanded(
+                  child: Container(
+                    width: double.maxFinite,
+                    color: Colors.white,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(20.0),
+                          child: SmoothPageIndicator(
+                              controller: controller.pageController,
+                              count: 3,
+                              onDotClicked: controller.dotNavigationClick),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ],

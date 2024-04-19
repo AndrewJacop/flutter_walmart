@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_walmart/Features/account/account_screen.dart';
+import 'package:flutter_walmart/Features/account/views/account_screen.dart';
 import 'package:flutter_walmart/Features/home/persentation/widget/home_body.dart';
 import 'package:flutter_walmart/Features/home/persentation/widget/appbar/custom_head_body.dart';
 import 'package:flutter_walmart/Features/mylists/view/my_list_screen.dart';
-import 'package:flutter_walmart/Features/search/search_screen.dart';
-import 'package:flutter_walmart/Features/services/services_screen.dart';
+import 'package:flutter_walmart/Features/search/views/search_screen.dart';
+import 'package:flutter_walmart/Features/services/views/services_screen.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class HomeView extends StatefulWidget {
@@ -49,23 +49,23 @@ class _HomeViewState extends State<HomeView> {
         items: <BottomNavigationBarItem>[
           _buildBottomNavigationBarItem(
             // ignore: deprecated_member_use
-            icon: FontAwesomeIcons.home,
+            icon: FontAwesomeIcons.store,
             label: 'Home',
           ),
           _buildBottomNavigationBarItem(
-            icon: FontAwesomeIcons.shoppingCart,
-            label: 'My files',
+            icon: FontAwesomeIcons.inbox,
+            label: 'My Items',
           ),
           _buildBottomNavigationBarItem(
-            icon: FontAwesomeIcons.search,
+            icon: FontAwesomeIcons.magnifyingGlass,
             label: 'Search',
           ),
           _buildBottomNavigationBarItem(
-            icon: FontAwesomeIcons.user,
+            icon: FontAwesomeIcons.grip,
             label: 'Services',
           ),
           _buildBottomNavigationBarItem(
-            icon: FontAwesomeIcons.userCircle,
+            icon: FontAwesomeIcons.circleUser,
             label: 'Account',
           ),
         ],

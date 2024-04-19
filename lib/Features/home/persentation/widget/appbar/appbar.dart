@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_walmart/Features/home/persentation/widget/appbar/custom_head_body.dart';
+import 'package:flutter_walmart/Features/auth/views/auth_screen.dart';
 import 'package:flutter_walmart/core/utils/assets.dart';
 import 'package:flutter_walmart/core/utils/styles.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
 
 class HeadAppBar extends StatelessWidget {
   const HeadAppBar({super.key});
@@ -16,14 +17,14 @@ class HeadAppBar extends StatelessWidget {
       height: 70,
       child: Row(
         children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
+          const Padding(
+            padding: EdgeInsets.all(8.0),
             child: Text(
               "Hi, Yousef",
               style: Styles.textStyle14,
             ),
           ),
-          Spacer(
+          const Spacer(
             flex: 5,
           ),
           // Adjust the width of the leading widget
@@ -33,7 +34,7 @@ class HeadAppBar extends StatelessWidget {
               width: 60, // Adjust the width of the image
             ),
           ),
-          Spacer(
+          const Spacer(
             flex: 5,
           ),
           // Add space between the image and actions
@@ -45,6 +46,15 @@ class HeadAppBar extends StatelessWidget {
               ), // Change the icon
               onPressed: () {
                 // Add functionality for the shopping cart button
+                Get.bottomSheet(
+                  const AuthScreen(),
+                  isScrollControlled: true,
+                  clipBehavior: Clip.antiAlias,
+                  backgroundColor: Colors.transparent,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                );
               },
             ),
           ),

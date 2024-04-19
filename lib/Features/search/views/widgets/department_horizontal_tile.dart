@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_walmart/common/widgets/custome_divider.dart';
 
 class DepartmentHorizontalTile extends StatelessWidget {
   const DepartmentHorizontalTile({
@@ -20,11 +21,7 @@ class DepartmentHorizontalTile extends StatelessWidget {
             title: const Text("Department Name"),
             trailing: const Icon(Icons.arrow_right),
           ),
-          Divider(
-            indent: 30,
-            endIndent: 30,
-            color: Colors.black.withOpacity(0.1),
-          )
+          const CustomDivider()
         ],
       ),
     );

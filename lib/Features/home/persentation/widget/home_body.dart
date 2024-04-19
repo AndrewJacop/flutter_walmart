@@ -49,7 +49,7 @@ class AdvertisingSection extends StatelessWidget {
             return Column(
               children: [
                 ItemBanner(
-                  aspectR: 16 / 9,
+                  aspectR: 11 / 7,
                   imgurl: adsList[0].imgLink!,
                   urlhref: adsList[0].href,
                   shopnow: adsList[0].title!,
@@ -176,6 +176,7 @@ class AdvertisingSection extends StatelessWidget {
                   subcategories: "Celebrate spring with outdoor fun",
                   productsitems: categoryList,
                 ),
+                CardView2(),
                 ItemBanner(
                   aspectR: 11 / 9,
                   imgurl: adsList[10].imgLink!,
@@ -247,11 +248,7 @@ class AdvertisingSection extends StatelessWidget {
                   subcategories: "Get Most Bang For your buck",
                   productsitems: categoryList3,
                 ),
-                categorySection(
-                  categoryname: "More Super-low Prices",
-                  subcategories: "Get Most Bang For your buck",
-                  productsitems: categoryList3,
-                )
+                categorySection()
                 // ItemBanner(
                 //   aspectR: 9 / 11,
                 //   imgurl: adsList[16].imgLink!,

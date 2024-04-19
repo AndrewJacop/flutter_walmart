@@ -13,24 +13,18 @@ class AdsImpl implements AdsRepo {
   @override
   Future<Either<Failure, List<AdsModel>>> adslunch() async {
     var data = await apiService.get(endPoint: 'ads') as List<dynamic>;
-    // print("??????????????????????????????????");
-    // print("?????????????data?????????????????????");
-    // print(data[0]);
+
     try {
       List<AdsModel> adslist = [];
 
       for (var item in data) {
         try {
           adslist.add(AdsModel.fromJson(item));
-        } catch (e) {
-          // Handle error if JSON parsing fails for an item
-          // You might want to log or ignore the error here
-        }
+        } catch (e) {}
       }
 
       return right(adslist);
     } catch (e) {
-      // Handle API call error
       if (e is DioError) {
         return left(ServerFailure.fromDioError(e));
       }

@@ -20,34 +20,34 @@ class RatingWidget extends StatelessWidget {
               if (index < rating.floor()) {
                 return Icon(
                   Icons.star,
-                  color: Colors.yellow,
+                  color: Colors.yellow[700],
                   size: 12,
                 );
               } else if (index == rating.floor() && rating % 1 != 0) {
                 return Icon(
                   Icons.star_half,
-                  color: Colors.yellow,
+                  color: Colors.yellow[700],
                   size: 12,
                 );
               } else {
                 return Icon(
                   Icons.star_border,
-                  color: Colors.yellow,
+                  color: Colors.yellow[700],
                   size: 12,
                 );
               }
             },
           ),
         ),
-        SizedBox(width: 4),
+        const SizedBox(width: 4),
         Text(
           '($rating)',
-          style: TextStyle(fontSize: 12),
+          style: const TextStyle(fontSize: 12),
         ),
-        SizedBox(width: 4),
+        const SizedBox(width: 4),
         Text(
           '$reviewCount reviews',
-          style: TextStyle(fontSize: 12),
+          style: const TextStyle(fontSize: 12),
         ),
       ],
     );

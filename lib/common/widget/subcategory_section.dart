@@ -18,7 +18,7 @@ class SubcategorySection extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.all(8.0),
       child: SizedBox(
-        height: 426,
+        height: 410,
         width: 389,
         child: Column(
           children: [

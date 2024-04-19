@@ -24,7 +24,7 @@ class _HomeViewState extends State<HomeView> {
   static final List<Widget> _widgetOptions = <Widget>[
     // Replace this with your actual home content widget
     AdvertisingSection(), // Example placeholder for search page
-    const Text('Myfiles'), // Example placeholder for cart page
+    const Text('My Items'), // Example placeholder for cart page
     const Text('Search'),
     const Text('Services'), // Example placeholder for cart page
     const Text('Account'),
@@ -98,8 +98,7 @@ class _HomeViewState extends State<HomeView> {
       icon: GestureDetector(
         onTap: () {
           // Handle tap on this item
-          _onItemTapped(
-              _selectedIndex); // Example: Call the same method for now
+          // Example: Call the same method for now
         },
         child: FaIcon(icon),
       ),

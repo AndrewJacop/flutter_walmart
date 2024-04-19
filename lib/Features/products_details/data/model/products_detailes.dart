@@ -7,7 +7,7 @@ class ProductsDetailes {
   String? shippingWeight;
   String? productDimensions;
   String? warrenty;
-  List<int>? reviews;
+  List<dynamic>? reviews;
   List<dynamic>? variants;
 
   ProductsDetailes({
@@ -33,7 +33,7 @@ class ProductsDetailes {
       shippingWeight: json['shippingWeight'] as String?,
       productDimensions: json['productDimensions'] as String?,
       warrenty: json['warrenty'] as String?,
-      reviews: json['reviews'] as List<int>?,
+      reviews: json['reviews'] as List<dynamic>?,
       variants: json['variants'] as List<dynamic>?,
     );
   }

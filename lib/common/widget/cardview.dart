@@ -7,7 +7,7 @@ class CardView extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Container(
-        margin: EdgeInsets.symmetric(vertical: 12.0),
+        margin: const EdgeInsets.symmetric(vertical: 12.0),
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(8.0),
@@ -73,6 +73,65 @@ class CardView extends StatelessWidget {
               ),
             ],
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class CardView2 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Container(
+        height: 70,
+        margin: const EdgeInsets.symmetric(vertical: 12.0),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(8.0),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.5),
+              spreadRadius: 2,
+              blurRadius: 4,
+              offset: Offset(0, 2), // changes position of shadow
+            ),
+          ],
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: SizedBox(
+                width: MediaQuery.of(context).size.width,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Image.network(
+                      "https://i5.walmartimages.com/dfw/4ff9c6c9-a62a/k2-_16b4fa32-fb2c-461b-b8e9-3ea8c7b587da.v1.png?odnHeight=64&odnWidth=107&odnBg=FFFFFF",
+                      width: 56,
+                      height: 36,
+                      fit: BoxFit.contain,
+                    ),
+                    Column(
+                      children: [
+                        SizedBox(
+                          child: Text('Earn 5% cash back on Walmart.com.',
+                              style: Styles.textStyle14),
+                        ),
+                        Text('See if you’re  pre-approved with no credit risk.',
+                            maxLines: 2,
+                            style: Styles.textStyle14
+                                .copyWith(color: Colors.grey[500])),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );

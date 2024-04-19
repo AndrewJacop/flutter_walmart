@@ -21,8 +21,6 @@ class ApiService {
 
   Future<List<dynamic>> get(
       {required String endPoint, Map<String, dynamic>? queryParameters}) async {
-    print("uri????????????????????????");
-    print(Uri.parse('$_baseUrl$endPoint'));
     Uri uri = Uri.parse('$_baseUrl$endPoint');
 
     if (queryParameters != null && queryParameters.isNotEmpty) {
@@ -34,6 +32,18 @@ class ApiService {
     List<dynamic> responseBody = [];
 
     responseBody = json.decode(response.body);
+    // If the server returns a 200 OK response, parse the JSON and return it
+
+    return responseBody;
+  }
+
+  Future<dynamic> getsingle(
+      {required String endPoint, Map<String, dynamic>? queryParameters}) async {
+    Uri uri = Uri.parse('$_baseUrl$endPoint');
+
+    var response = await http.get(uri);
+
+    var responseBody = json.decode(response.body);
     // If the server returns a 200 OK response, parse the JSON and return it
 
     return responseBody;

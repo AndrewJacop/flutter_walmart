@@ -13,8 +13,7 @@ class ProductsIml implements ProductsRepo {
 
   @override
   Future<Either<Failure, List<ProductsModel>>> products() async {
-    var data =
-        await apiService.get(endPoint: 'products?limit=12') as List<dynamic>;
+    var data = await apiService.get(endPoint: 'products?limit=12');
 
     print(data[0]);
     try {
@@ -67,20 +66,21 @@ class ProductsIml implements ProductsRepo {
   }
 
   @override
-  Future<Either<Failure, List<ProductsDetailes>>> productsdetailes(
-      String id) async {
-    var data = await apiService.get(endPoint: 'products/details/$id');
+  Future<Either<Failure, ProductsDetailes>> productsdetailes(String id) async {
+    print("////////////////////////id///////////");
+    print("$id");
+    var data = await apiService.getsingle(endPoint: 'products/details/$id');
     print("////////////////////////productsid");
     print(data);
     try {
-      final List<ProductsDetailes> productsDetailsList =
-          data.map((item) => ProductsDetailes.fromJson(item)).toList();
+      final dynamic productsDetailsList = ProductsDetailes.fromJson(data);
       print("////////////////////////ProductsDetailes");
       print(ProductsDetailes);
       return right(productsDetailsList);
     } catch (e) {
-      // Handle API call error
-      if (e is DioError) {
+      print("////////////////////////error");
+      print(e);
+      if (e is DioException) {
         return left(ServerFailure.fromDioError(e));
       }
 

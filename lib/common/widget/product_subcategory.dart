@@ -25,15 +25,40 @@ class SubProductCard extends StatelessWidget {
         final productsController = Get.put(ProductsidController());
         await productsController.fetchproductsid(product.id);
 
-        final List<ProductsDetailes> productDetails =
-            productsController.productsid;
+        final ProductsDetailes productDetails =
+            productsController.productsid.value;
 
         print("////////////////////////productsid");
         print(productDetails);
 
-        await Get.to(Products(productsid: productDetails[0]));
+        showModalBottomSheet(
+          context: context,
+          isScrollControlled: true,
+          builder: (context) => Container(
+            decoration: const BoxDecoration(
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(
+                    20), // Adjust the radius for the top-left corner
+                topRight: Radius.circular(
+                    20), // Adjust the radius for the top-right corner
+              ),
+              border: Border(
+                top: BorderSide(
+                  color: Colors.grey, // Border color
+                  width: 3, // Border width
+                ),
+              ),
+            ),
+            height: MediaQuery.of(context).size.height / 1.1,
+            child: Products(
+              productsid: product,
+              productdetailes: productDetails,
+            ),
+          ),
+        );
+        // await Get.to(Products());
       },
-      child: Container(
+      child: SizedBox(
         width: 200,
         height: 100, // Adjust height as needed
 

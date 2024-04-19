@@ -1,5 +1,5 @@
 class AdsModel {
-  int? id;
+  String? id;
   String? title;
   String? imgLink;
   String? href;
@@ -8,7 +8,7 @@ class AdsModel {
   AdsModel({this.id, this.title, this.imgLink, this.href, this.query});
 
   factory AdsModel.fromJson(Map<String, dynamic> json) => AdsModel(
-        id: json['id'] as int?,
+        id: json['id'] as String?,
         title: json['title'] as String?,
         imgLink: json['imgLink'] as String?,
         href: json['href'] as String?,

@@ -46,7 +46,7 @@ class ProductCarousel extends StatelessWidget {
             }).toList() ??
             [],
       ),
-      SizedBox(
+      const SizedBox(
         height: 10,
       ),
       Obx(
@@ -56,7 +56,7 @@ class ProductCarousel extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                for (int i = 0; i < 3; i++)
+                for (int i = 0; i < listimage!.length; i++)
                   GestureDetector(
                     onTap: () {
                       // Update the selected index when the circle is tapped
@@ -64,7 +64,7 @@ class ProductCarousel extends StatelessWidget {
                     },
                     child: Container(
                       margin: EdgeInsets.all(3),
-                      width: 20,
+                      width: 10,
                       height: 10,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(25),

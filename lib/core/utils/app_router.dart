@@ -14,7 +14,7 @@ abstract class AppRouter {
     ),
     GetPage(
       name: kCart,
-      page: () => const Cart(),
+      page: () => Cart(),
     ),
     // Define other routes if needed
   ];

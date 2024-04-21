@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_walmart/Features/Product/data/model/Product_model.dart';
 import 'package:flutter_walmart/Features/Product/logic/products_get.dart';
 import 'package:flutter_walmart/Features/Product/logic/subcategory_get.dart';
+import 'package:flutter_walmart/Features/cart/logic/get_cart.dart';
 import 'package:flutter_walmart/Features/home/data/model/ads_model.dart';
 import 'package:flutter_walmart/Features/home/logic/get_ads.dart';
 import 'package:flutter_walmart/Features/home/persentation/widget/item_banner_body_home.dart';
@@ -15,6 +16,8 @@ class AdvertisingSection extends StatelessWidget {
   AdvertisingSection({super.key});
   final AdsController adsController = Get.put(AdsController());
   final ProductsController productsController = Get.put(ProductsController());
+  final CartController getcart = Get.put(CartController());
+
   final SubcategoryController subcategoryController =
       Get.put(SubcategoryController());
 

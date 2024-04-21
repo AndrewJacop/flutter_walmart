@@ -1,45 +1,139 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_walmart/Features/Product/presentation/shipping.dart';
+import 'package:flutter_walmart/Features/Product/data/model/Product_model.dart';
+import 'package:flutter_walmart/Features/cart/logic/get_cart.dart';
+
+import 'package:flutter_walmart/Features/home/persentation/widget/appbar/custom_seacrch.dart';
+import 'package:flutter_walmart/common/widget/button_enmation.dart';
 import 'package:flutter_walmart/core/utils/styles.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
 
 class Cart extends StatelessWidget {
-  const Cart({Key? key}) : super(key: key);
+  final CartController cartController = Get.find<CartController>();
+  Cart({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: CustomScrollView(
-        shrinkWrap: false,
-        slivers: <Widget>[
-          SliverList(
-            delegate: SliverChildListDelegate(
-              [
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10),
-                  child: Column(
-                    children: [
-                      Row(
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.blue,
+          title: CustomSearch(),
+        ),
+        body: Stack(children: [
+          CustomScrollView(
+            shrinkWrap: false,
+            slivers: <Widget>[
+              SliverList(
+                delegate: SliverChildListDelegate(
+                  [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 10, vertical: 15),
+                      child: Column(
                         children: [
-                          Text("Cart"),
-                          SizedBox(
-                            width: 5,
+                          Row(
+                            children: [
+                              Text("Cart"),
+                              SizedBox(
+                                width: 5,
+                              ),
+                              Obx(() => Text(
+                                    "(sumitem of ${cartController.cartItems.length})",
+                                  )),
+                            ],
                           ),
-                          Text("(sumitem of sumitem)"),
+                          CardView3(),
+                          FulfillmentZone(),
+                          ProductsCart(
+                            cartItems: cartController.cartItems,
+                          )
                         ],
                       ),
-                      CardView3(),
-                      FulfillmentZone(),
-                      ProductsCart()
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-              ],
+              ),
+            ],
+          ),
+          Positioned(
+            // This positions the button containing the price
+            bottom: -1,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                color: Colors.grey[200],
+                width: MediaQuery.of(context).size.width,
+                height: 60,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 15),
+                          child: Obx(() => Text(
+                                "Estimated total ${cartController.cartItems.length} of ${cartController.cartItems.length} items",
+                              )),
+                        ),
+                        const SizedBox(
+                          width: 10,
+                        ),
+                        Text(
+                          '\$',
+                          style: Styles.textStyle18.copyWith(
+                              fontWeight: FontWeight.w400, fontSize: 14),
+                        ),
+                        Obx(() => Text(
+                              '${cartController.getTotalPrice().toStringAsFixed(2)}',
+                              style: Styles.textStyle18.copyWith(
+                                  fontWeight: FontWeight.w400, fontSize: 16),
+                            )),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Obx(() => Text(
+                              cartController.sumsale.value.toStringAsFixed(2) !=
+                                      null
+                                  ? 'Sale Price: \$${cartController.sumsale.value.toStringAsFixed(2)}'
+                                  : 'Price when purchased online',
+                              style: Styles.textStyle14,
+                            )),
+                      ],
+                    ),
+                    InkWell(
+                      onTap: () {
+                        // Add your checkout logic here
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.blue,
+                          borderRadius: BorderRadius.circular(
+                              15), // Adjust border radius as needed
+                          border: Border.all(
+                              color: Colors.blue,
+                              width: 2), // Add border properties
+                        ),
+                        width: MediaQuery.of(context).size.width / 1.1,
+                        height: 30,
+                        child: Center(
+                          child: Text(
+                            'checkout all items',
+                            style: Styles.textStyle14
+                                .copyWith(color: Colors.white),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ),
           ),
-        ],
+        ]),
       ),
     );
   }
@@ -105,7 +199,8 @@ class FulfillmentZone extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 10),
-      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+      child:
+          const Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         Row(
           children: [
             // Image.asset(
@@ -178,7 +273,7 @@ class FulfillmentTile extends StatelessWidget {
         ),
         borderRadius: BorderRadius.circular(8), // Border radius
       ),
-      margin: EdgeInsets.all(8),
+      margin: const EdgeInsets.all(8),
       width: 110,
       height: 120,
       child: Padding(
@@ -213,8 +308,8 @@ class FulfillmentTile extends StatelessWidget {
 }
 
 class ProductsCart extends StatefulWidget {
-  const ProductsCart({Key? key}) : super(key: key);
-
+  const ProductsCart({Key? key, required this.cartItems}) : super(key: key);
+  final List<Map<String, dynamic>> cartItems;
   @override
   State<ProductsCart> createState() => _ProductsCartState();
 }
@@ -263,7 +358,7 @@ class _ProductsCartState extends State<ProductsCart> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            SizedBox(
+                            const SizedBox(
                               child: Text(
                                 'Pickup or delivery from store ',
                                 style: Styles.textStyle18,
@@ -272,7 +367,7 @@ class _ProductsCartState extends State<ProductsCart> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Text(
+                                const Text(
                                   'as soon as Tomorrow',
                                   style: Styles.textStyle14,
                                 ),
@@ -291,48 +386,66 @@ class _ProductsCartState extends State<ProductsCart> {
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             showDetails
-                ? Container(
-                    child: Column(
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [Text("2 of 2 items selected")],
+                ? Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [Text("2 of 2 items selected")],
+                      ),
+                      SizedBox(
+                        height: 60,
+                        width: MediaQuery.of(context)
+                            .size
+                            .width, // Adjust the width as needed
+                        child: ListView.builder(
+                          shrinkWrap: true,
+                          scrollDirection: Axis.horizontal,
+                          itemCount: widget.cartItems.length,
+                          itemBuilder: (context, index) {
+                            final product = widget.cartItems[index]['product']
+                                as ProductsModel;
+
+                            return Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 5),
+                              child: Image.network(
+                                "${product.images[0]}" ??
+                                    "https://i5.walmartimages.com/asr/7c542df3-e6b3-4b7a-8dfa-ad252d411dcb.2c1e103d237d8914cfb584ad4a5d828c.jpeg?odnHeight=117&odnWidth=117&odnBg=FFFFFF",
+                                width: 50,
+                              ),
+                            );
+                          },
                         ),
-                        Row(
-                          children: [
-                            Image.network(
-                                width: 30,
-                                "https://i5.walmartimages.com/asr/7c542df3-e6b3-4b7a-8dfa-ad252d411dcb.2c1e103d237d8914cfb584ad4a5d828c.jpeg?odnHeight=117&odnWidth=117&odnBg=FFFFFF")
-                          ],
-                        ),
-                        ElevatedButton(
-                            onPressed: () {
-                              setState(() {
-                                showDetails =
-                                    !showDetails; // Toggle showDetails value
-                              });
-                            },
-                            child: Row(
-                              children: [
-                                Text("see details"),
-                                SizedBox(
-                                  width: 10,
-                                ),
-                                Icon(FontAwesomeIcons.arrowDown)
-                              ],
-                            ))
-                      ],
-                    ),
+                      ),
+                      ElevatedButton(
+                          onPressed: () {
+                            setState(() {
+                              showDetails =
+                                  !showDetails; // Toggle showDetails value
+                            });
+                          },
+                          child: const Row(
+                            children: [
+                              Text("see details"),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Icon(FontAwesomeIcons.arrowDown)
+                            ],
+                          )),
+                      SizedBox(
+                        height: 40,
+                      )
+                    ],
                   )
                 : Column(
                     children: [
                       Row(
                         children: [
-                          Text("2 of 2 items selected"),
+                          const Text("2 of 2 items selected"),
                           SizedBox(
                             width: 10,
                           ),
@@ -349,14 +462,22 @@ class _ProductsCartState extends State<ProductsCart> {
                         height: 10,
                       ),
                       SizedBox(
-                        height: 400,
                         width: 400,
                         child: ListView.builder(
+                          shrinkWrap: true,
                           scrollDirection: Axis.vertical,
+                          physics: NeverScrollableScrollPhysics(),
                           itemBuilder: (context, index) {
-                            return PrpductsShow();
+                            final product = widget.cartItems[index]['product']
+                                as ProductsModel;
+                            final quantity =
+                                widget.cartItems[index]['quantity'] as int;
+                            return PrpductsShow(
+                              product: product,
+                              quantity: quantity,
+                            );
                           },
-                          itemCount: 4,
+                          itemCount: widget.cartItems.length,
                         ),
                       ),
                       ElevatedButton(
@@ -366,7 +487,7 @@ class _ProductsCartState extends State<ProductsCart> {
                                   !showDetails; // Toggle showDetails value
                             });
                           },
-                          child: Row(
+                          child: const Row(
                             children: [
                               Text("hide details"),
                               SizedBox(
@@ -374,7 +495,10 @@ class _ProductsCartState extends State<ProductsCart> {
                               ),
                               Icon(FontAwesomeIcons.arrowUp)
                             ],
-                          ))
+                          )),
+                      const SizedBox(
+                        height: 50,
+                      )
                     ],
                   ),
           ],
@@ -386,76 +510,87 @@ class _ProductsCartState extends State<ProductsCart> {
 
 class PrpductsShow extends StatefulWidget {
   const PrpductsShow({
-    super.key,
-  });
+    Key? key,
+    required this.product,
+    required this.quantity,
+  }) : super(key: key);
+
+  final ProductsModel product;
+  final int quantity;
 
   @override
   State<PrpductsShow> createState() => _PrpductsShowState();
 }
 
-bool checked = false;
-
 class _PrpductsShowState extends State<PrpductsShow> {
+  final CartController _cartController = Get.find<CartController>();
+
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Checkbox(
-              value: checked,
-              onChanged: (newValue) {
-                setState(() {
-                  checked = newValue!;
-                });
-              },
-            ),
-            Image.network(
-                width: 50,
-                "https://i5.walmartimages.com/asr/7c542df3-e6b3-4b7a-8dfa-ad252d411dcb.2c1e103d237d8914cfb584ad4a5d828c.jpeg?odnHeight=117&odnWidth=117&odnBg=FFFFFF"),
-            Container(
-              width: MediaQuery.of(context).size.width / 1.9,
-              height: 70,
-              child: Text(
-                "Open Box Apple iPhone 15 Pro Max A2849 256GB Natural Titanium (US Model) - Factory Unlocked Cell Phone",
-                overflow: TextOverflow.ellipsis,
-                maxLines: 3,
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 15),
+      child: Column(
+        children: [
+          Obx(() => Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Checkbox(
+                    value: _cartController.checked.value ?? false,
+                    onChanged: (newValue) {
+                      if (newValue != _cartController.checked.value) {
+                        // If checkbox is unchecked, call removefromcart
+                        // _cartController.removetotalcart(widget.product);
+
+                        _cartController.checked.value =
+                            newValue ?? false; // Ensure newValue is not null
+                      }
+                    },
+                  ),
+                  Image.network(
+                    "${widget.product.images[0]}",
+                    width: 50,
+                  ),
+                  Container(
+                    width: MediaQuery.of(context).size.width / 2,
+                    height: 70,
+                    child: Text(
+                      "${widget.product.title}",
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 3,
+                    ),
+                  ),
+                  Text(' \$${widget.product.originalPrice}')
+                ],
+              )),
+          SizedBox(height: 5),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              InkWell(
+                onTap: () {
+                  _cartController.removeFromCart(widget.product);
+                },
+                child: Text(
+                  "remove",
+                  style: TextStyle(decoration: TextDecoration.underline),
+                ),
               ),
-            ),
-            Text("14")
-          ],
-        ),
-        SizedBox(
-          height: 5,
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            InkWell(
-              child: Text(
-                "remove ",
-                style: Styles.textStyle14
-                    .copyWith(decoration: TextDecoration.underline),
+              InkWell(
+                onTap: () {
+                  // Implement your logic to save for later
+                },
+                child: Text(
+                  "Save for later",
+                  style: TextStyle(decoration: TextDecoration.underline),
+                ),
               ),
-            ),
-            InkWell(
-              child: Text(
-                "Save for later  ",
-                style: Styles.textStyle14
-                    .copyWith(decoration: TextDecoration.underline),
-              ),
-            ),
-            InkWell(
-              child: Text(
-                "Save for later  ",
-                style: Styles.textStyle14
-                    .copyWith(decoration: TextDecoration.underline),
-              ),
-            )
-          ],
-        )
-      ],
+              AnimatedNumber(
+                productsid: widget.product,
+              )
+            ],
+          )
+        ],
+      ),
     );
   }
 }

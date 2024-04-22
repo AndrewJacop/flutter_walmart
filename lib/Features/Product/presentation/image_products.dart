@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_walmart/Features/Product/logic/get_products.dart';
@@ -31,16 +32,28 @@ class ProductCarousel extends StatelessWidget {
               return Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Container(
+                  width: MediaQuery.of(context).size.width,
+                  height: 1000,
                   child: Center(
-                    child: Image.network(
-                      url, // Use the current image URL
-                      fit: BoxFit.cover, // Set image fit to cover the container
-                      width: MediaQuery.of(context)
-                          .size
-                          .width, // Set maximum width for the image
-                      height: 1000, // Set maximum height for the image
-                    ),
-                  ),
+                      child: CachedNetworkImage(
+                    placeholderFadeInDuration: Duration.zero,
+                    placeholder: (context, url) =>
+                        const CircularProgressIndicator(),
+                    errorWidget: (context, url, error) =>
+                        const Icon(Icons.error),
+                    imageUrl: url,
+                    fit: BoxFit.cover,
+                  )
+                      //  Image.network(
+                      //   url, // Use the current image URL
+                      //   fit: BoxFit
+                      //       .cover, // Set image fit to cover the container
+                      //   width: MediaQuery.of(context)
+                      //       .size
+                      //       .width, // Set maximum width for the image
+                      //   height: 1000, // Set maximum height for the image
+                      // ),
+                      ),
                 ),
               );
             }).toList() ??

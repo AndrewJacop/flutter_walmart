@@ -2,14 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_walmart/Features/Product/data/model/Product_model.dart';
 import 'package:flutter_walmart/Features/Product/presentation/rating.dart';
 import 'package:flutter_walmart/Features/home/persentation/widget/appbar/custom_seacrch.dart';
+import 'package:flutter_walmart/common/data/category_get.dart';
 import 'package:flutter_walmart/common/widget/button_enmation.dart';
 import 'package:flutter_walmart/core/utils/assets.dart';
 import 'package:flutter_walmart/core/utils/styles.dart';
 import 'package:get/get.dart';
 
 class ProductView extends StatelessWidget {
-  const ProductView({Key? key, required this.itemsview}) : super(key: key);
+  ProductView({Key? key, required this.itemsview}) : super(key: key);
   final List<ProductsModel> itemsview;
+
   @override
   Widget build(BuildContext context) {
     final List<ProductsModel> items = Get.arguments;
@@ -35,9 +37,10 @@ class ProductView extends StatelessWidget {
 }
 
 class ProductsCategoryShow extends StatelessWidget {
-  const ProductsCategoryShow({Key? key, required this.itemsproduct})
+  ProductsCategoryShow({Key? key, required this.itemsproduct})
       : super(key: key);
   final ProductsModel itemsproduct;
+  final CategoriesController controller = Get.find<CategoriesController>();
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -81,9 +84,33 @@ class ProductsCategoryShow extends StatelessWidget {
                 SizedBox(
                   height: 30,
                 ),
-                AnimatedNumber(
-                  productsid: itemsproduct,
-                ),
+                Obx(
+                  () => controller.toggleClick.value
+                      ? AnimatedNumber(
+                          productsid: itemsproduct,
+                        )
+                      : InkWell(
+                          onTap: () {
+                            controller.toggle();
+                          },
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: Colors.blue,
+                              borderRadius: BorderRadius.circular(15),
+                              border: Border.all(color: Colors.blue, width: 2),
+                            ),
+                            width: MediaQuery.of(context).size.width / 2.3,
+                            height: 35,
+                            child: Center(
+                              child: Text(
+                                'Add to cart',
+                                style: Styles.textStyle14
+                                    .copyWith(color: Colors.white),
+                              ),
+                            ),
+                          ),
+                        ),
+                )
               ],
             ),
           ),

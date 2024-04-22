@@ -1,12 +1,10 @@
-import 'dart:convert';
-
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_walmart/Features/home/persentation/widget/home_body.dart';
 
 import 'package:flutter_walmart/Features/home/persentation/widget/appbar/custom_head_body.dart';
-import 'package:flutter_walmart/core/utils/api_sevice.dart';
+
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:http/http.dart' as http;
 

@@ -1,3 +1,19 @@
+// class CartController extends GetxController {
+//   var cartItems = [].obs;
+
+//   void addToCart(ProductsModel product) {
+//     cartItems.add(product);
+//   }
+
+//   void removeFromCart(ProductsModel product) {
+//     print("//////////////////////cartItems");
+//     print(cartItems);
+//     cartItems.remove(product);
+//   }
+// }
+
+import 'package:flutter_walmart/Features/cart/data/cart_model.dart';
+import 'package:flutter_walmart/Features/cart/presentation/cart.dart';
 import 'package:get/get.dart';
 import 'package:flutter_walmart/Features/Product/data/model/Product_model.dart';
 
@@ -16,81 +32,84 @@ import 'package:flutter_walmart/Features/Product/data/model/Product_model.dart';
 // }
 
 class CartController extends GetxController {
-  var cartItems = <Map<String, dynamic>>[].obs;
+  RxList<ProductsModel> cartItems = <ProductsModel>[].obs;
   var sum = 0.0.obs;
   var sumsale = 0.0.obs;
   var checked = true.obs; // Change here
 
   void addToCart(ProductsModel product) {
     var existingProductIndex =
-        cartItems.indexWhere((item) => item['product'] == product);
+        cartItems.indexWhere((item) => item.id == product.id);
 
     if (existingProductIndex != -1) {
-      cartItems[existingProductIndex]['quantity'] += 1;
+      cartItems[existingProductIndex].increase();
     } else {
-      cartItems.add({'product': product, 'quantity': 1});
+      product.increase();
+      cartItems.add(product);
     }
+    sum.value += double.parse(product.originalPrice);
     // addToSum(product);
   }
 
   void removeFromCart(ProductsModel product) {
     var existingProductIndex =
-        cartItems.indexWhere((item) => item['product'] == product);
+        cartItems.indexWhere((item) => item.id == product.id);
 
     if (existingProductIndex != -1) {
-      cartItems[existingProductIndex]['quantity'] -= 1;
-      if (cartItems[existingProductIndex]['quantity'] == 0) {
-        cartItems.removeAt(existingProductIndex);
-      }
-      // removeFromSum(product);
+      cartItems[existingProductIndex].decrease();
     }
-  }
-
-  int getProductQuantity(ProductsModel product) {
-    // Find the index of the product in the cart
-    var item = cartItems.firstWhere(
-      (item) => item['product'].id == product.id,
-      orElse: () => {'product': null, 'quantity': 0},
-    );
-
-    // If the product exists, return its quantity, otherwise return 0
-    return item['quantity'];
-  }
-
-  double getTotalPrice() {
-    double totalPrice = 0.0;
-    for (var item in cartItems) {
-      final product = item['product'] as ProductsModel;
-      final quantity = item['quantity'] as int;
-      final originalPrice = double.parse(product.originalPrice);
-      totalPrice += originalPrice * quantity;
+    if (cartItems[existingProductIndex].count.value == 0) {
+      cartItems.removeAt(existingProductIndex);
     }
-    return totalPrice;
+    sum.value -= double.parse(product.originalPrice);
   }
+  // removeFromSum(product);
+}
 
-  double getTotalsale() {
-    double totalPrice = 0.0;
-    for (var item in cartItems) {
-      final product = item['product'] as ProductsModel;
-      final quantity = item['quantity'] as int;
-      final salePrice = product.discount;
-      totalPrice += salePrice * quantity;
-    }
-    return totalPrice;
-  }
+// int getProductQuantity(ProductsModel product) {
+//   // Find the index of the product in the cart
+//   var item = cartItems.firstWhere(
+//     (item) => item['product'].id == product.id,
+//   );
 
-  double removetotalcart(ProductsModel product) {
-    double totalPrice = 0.0;
-    for (var item in cartItems) {
-      final product = item['product'] as ProductsModel;
-      final quantity = item['quantity'] as int;
-      final originalPrice = double.parse(product.originalPrice);
-      totalPrice += originalPrice * quantity;
-      double sumtotal = getTotalPrice();
-      totalPrice = sumtotal - totalPrice;
-    }
-    return totalPrice;
-  }
+//   // If the product exists, return its quantity, otherwise return 0
+//   return item['quantity'];
+// }
+
+double getTotalPrice() {
+  double totalPrice = 0.0;
+  // for (var item in cartItems) {
+  //   final product = item['product'] as ProductsModel;
+  //   final quantity = item['quantity'] as int;
+  //   final originalPrice = double.parse(product.originalPrice);
+  //   totalPrice += originalPrice * quantity;
+  // }
+  return totalPrice;
+}
+
+double getTotalsale() {
+  double totalPrice = 0.0;
+  // for (var item in cartItems) {
+  //   final product = item['product'] as ProductsModel;
+  //   final quantity = item['quantity'] as int;
+  //   final salePrice = product.discount;
+  //   totalPrice += salePrice * quantity;
+  // }
+  return totalPrice;
+}
+
+double removetotalcart(ProductsModel product) {
+  double totalPrice = 0.0;
+  // for (var item in cartItems) {
+  //   final product = item['product'] as ProductsModel;
+  //   final quantity = item['quantity'] as int;
+  //   final originalPrice = double.parse(product.originalPrice);
+  //   totalPrice += originalPrice * quantity;
+  //   double sumtotal = getTotalPrice();
+  //   totalPrice = sumtotal - totalPrice;
+  // }
+  return totalPrice;
+}
 
   // void addToSum(ProductsModel product) {
   //   final originalPrice = double.parse(product.originalPrice);
@@ -105,7 +124,7 @@ class CartController extends GetxController {
   //   sum.value -= originalPrice;
   //   sumsale.value -= salePrice;
   // }
-}
+
 
 
 

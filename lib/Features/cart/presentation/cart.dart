@@ -88,20 +88,20 @@ class Cart extends StatelessWidget {
                               fontWeight: FontWeight.w400, fontSize: 14),
                         ),
                         Obx(() => Text(
-                              '${cartController.getTotalPrice().toStringAsFixed(2)}',
+                              '${cartController.sum.value}',
                               style: Styles.textStyle18.copyWith(
                                   fontWeight: FontWeight.w400, fontSize: 16),
                             )),
                         SizedBox(
                           width: 10,
                         ),
-                        Obx(() => Text(
-                              cartController.sumsale.value.toStringAsFixed(2) !=
-                                      null
-                                  ? 'Sale Price: \$${cartController.sumsale.value.toStringAsFixed(2)}'
-                                  : 'Price when purchased online',
-                              style: Styles.textStyle14,
-                            )),
+                        // Obx(() => Text(
+                        //       cartController.sumsale.value.toStringAsFixed(2) !=
+                        //               null
+                        //           ? 'Sale Price: \$${cartController.sumsale.value.toStringAsFixed(2)}'
+                        //           : 'Price when purchased online',
+                        //       style: Styles.textStyle14,
+                        //     )),
                       ],
                     ),
                     InkWell(
@@ -309,7 +309,7 @@ class FulfillmentTile extends StatelessWidget {
 
 class ProductsCart extends StatefulWidget {
   const ProductsCart({Key? key, required this.cartItems}) : super(key: key);
-  final List<Map<String, dynamic>> cartItems;
+  final List<ProductsModel> cartItems;
   @override
   State<ProductsCart> createState() => _ProductsCartState();
 }
@@ -394,7 +394,9 @@ class _ProductsCartState extends State<ProductsCart> {
                     children: [
                       Row(
                         mainAxisAlignment: MainAxisAlignment.start,
-                        children: [Text("2 of 2 items selected")],
+                        children: [
+                          Text(" ${widget.cartItems.length} items selected")
+                        ],
                       ),
                       SizedBox(
                         height: 60,
@@ -406,8 +408,7 @@ class _ProductsCartState extends State<ProductsCart> {
                           scrollDirection: Axis.horizontal,
                           itemCount: widget.cartItems.length,
                           itemBuilder: (context, index) {
-                            final product = widget.cartItems[index]['product']
-                                as ProductsModel;
+                            final product = widget.cartItems[index];
 
                             return Padding(
                               padding: EdgeInsets.symmetric(horizontal: 5),
@@ -433,7 +434,10 @@ class _ProductsCartState extends State<ProductsCart> {
                               SizedBox(
                                 width: 10,
                               ),
-                              Icon(FontAwesomeIcons.arrowDown)
+                              Icon(
+                                FontAwesomeIcons.arrowDown,
+                                size: 10,
+                              )
                             ],
                           )),
                       SizedBox(
@@ -445,7 +449,7 @@ class _ProductsCartState extends State<ProductsCart> {
                     children: [
                       Row(
                         children: [
-                          const Text("2 of 2 items selected"),
+                          Text("${widget.cartItems.length} items selected"),
                           SizedBox(
                             width: 10,
                           ),
@@ -468,10 +472,10 @@ class _ProductsCartState extends State<ProductsCart> {
                           scrollDirection: Axis.vertical,
                           physics: NeverScrollableScrollPhysics(),
                           itemBuilder: (context, index) {
-                            final product = widget.cartItems[index]['product']
-                                as ProductsModel;
+                            final product =
+                                widget.cartItems[index] as ProductsModel;
                             final quantity =
-                                widget.cartItems[index]['quantity'] as int;
+                                widget.cartItems[index].count.value;
                             return PrpductsShow(
                               product: product,
                               quantity: quantity,
@@ -493,7 +497,10 @@ class _ProductsCartState extends State<ProductsCart> {
                               SizedBox(
                                 width: 10,
                               ),
-                              Icon(FontAwesomeIcons.arrowUp)
+                              Icon(
+                                FontAwesomeIcons.arrowUp,
+                                size: 10,
+                              )
                             ],
                           )),
                       const SizedBox(
@@ -531,37 +538,25 @@ class _PrpductsShowState extends State<PrpductsShow> {
       padding: const EdgeInsets.symmetric(vertical: 15),
       child: Column(
         children: [
-          Obx(() => Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Checkbox(
-                    value: _cartController.checked.value ?? false,
-                    onChanged: (newValue) {
-                      if (newValue != _cartController.checked.value) {
-                        // If checkbox is unchecked, call removefromcart
-                        // _cartController.removetotalcart(widget.product);
-
-                        _cartController.checked.value =
-                            newValue ?? false; // Ensure newValue is not null
-                      }
-                    },
-                  ),
-                  Image.network(
-                    "${widget.product.images[0]}",
-                    width: 50,
-                  ),
-                  Container(
-                    width: MediaQuery.of(context).size.width / 2,
-                    height: 70,
-                    child: Text(
-                      "${widget.product.title}",
-                      overflow: TextOverflow.ellipsis,
-                      maxLines: 3,
-                    ),
-                  ),
-                  Text(' \$${widget.product.originalPrice}')
-                ],
-              )),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Image.network(
+                "${widget.product.images[0]}",
+                width: 50,
+              ),
+              Container(
+                width: MediaQuery.of(context).size.width / 2,
+                height: 70,
+                child: Text(
+                  "${widget.product.title}",
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 3,
+                ),
+              ),
+              Text(' \$${widget.product.originalPrice}')
+            ],
+          ),
           SizedBox(height: 5),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,

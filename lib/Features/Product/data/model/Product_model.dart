@@ -1,7 +1,8 @@
-import 'dart:convert';
+import 'package:get/get.dart';
 
 class ProductsModel {
-  final String id;
+  final RxInt count = 0.obs;
+  String id;
   final String title;
   final List<String> images;
   final String brand;
@@ -47,5 +48,12 @@ class ProductsModel {
       returnPolicy: json['returnPolicy'],
       isGiftable: json['isGiftable'],
     );
+  }
+  void increase() {
+    count.value++;
+  }
+
+  void decrease() {
+    count.value--;
   }
 }

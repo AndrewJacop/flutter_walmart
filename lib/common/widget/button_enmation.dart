@@ -27,7 +27,7 @@ class AnimatedNumber extends StatelessWidget {
           children: [
             GestureDetector(
               onTap: () {
-                if (cartController.getProductQuantity(productsid) > 0) {
+                if (productsid.count.value > 0) {
                   cartController.removeFromCart(productsid);
                 }
               },
@@ -37,9 +37,8 @@ class AnimatedNumber extends StatelessWidget {
               ),
             ),
             Obx(() {
-              int numberOfItems = cartController.getProductQuantity(productsid);
               return Text(
-                '${numberOfItems ?? 0}',
+                '${productsid.count.value ?? 0}',
                 style: Styles.textStyle18.copyWith(),
               );
             }),

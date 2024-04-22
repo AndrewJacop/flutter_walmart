@@ -6,4 +6,5 @@ class AssetsData {
       'https://i5.walmartimages.com/dfw/4ff9c6c9-b781/k2-_80755ef4-426f-4952-84f6-a644254a79a7.v1.jpg?odnHeight=184&amp;odnWidth=276&amp;odnBg=&amp;odnDynImageQuality=70';
   static const banr3 =
       "https://i5.walmartimages.com/dfw/4ff9c6c9-5620/k2-_ec579c2e-bf0d-411e-b1ea-6f3096b44482.v1.jpg?odnHeight=298&amp;odnWidth=276&amp;odnBg=&amp;odnDynImageQuality=70";
+  static const pageerror = "assets/image/error.jpg";
 }

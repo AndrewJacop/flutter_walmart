@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_walmart/Features/Product/data/model/Product_model.dart';
 import 'package:flutter_walmart/common/widget/product_subcategory.dart';
+import 'package:flutter_walmart/core/utils/app_router.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:http/http.dart';
 
 class SubcategorySection extends StatelessWidget {
   final String categoryname;
@@ -23,6 +27,7 @@ class SubcategorySection extends StatelessWidget {
         child: Column(
           children: [
             HeadSection(
+              productsitemsview: productsitems,
               catname: subcategories,
               subcat: categoryname,
             ),
@@ -68,12 +73,14 @@ class FooterSection extends StatelessWidget {
 }
 
 class HeadSection extends StatelessWidget {
+  final List<ProductsModel> productsitemsview;
   final String catname;
   final String subcat;
   const HeadSection({
     super.key,
     required this.catname,
     required this.subcat,
+    required this.productsitemsview,
   });
 
   @override
@@ -108,7 +115,8 @@ class HeadSection extends StatelessWidget {
           ),
           InkWell(
             onTap: () {
-              // Handle view all action
+              Get.toNamed(AppRouter.kproductsview,
+                  arguments: productsitemsview);
             },
             child: const Text(
               "View All",

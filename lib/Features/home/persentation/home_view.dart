@@ -3,8 +3,6 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
-import 'package:flutter_walmart/Features/home/persentation/myitems.dart';
-import 'package:flutter_walmart/Features/home/persentation/search.dart';
 import 'package:flutter_walmart/Features/home/persentation/widget/home_body.dart';
 
 import 'package:flutter_walmart/Features/home/persentation/widget/appbar/custom_head_body.dart';
@@ -25,8 +23,8 @@ class _HomeViewState extends State<HomeView> {
   static final List<Widget> _widgetOptions = <Widget>[
     // Replace this with your actual home content widget
     AdvertisingSection(), // Example placeholder for search page
-    const Myitems(),
-    const Search(), // Example placeholder for cart page
+    // const Myitems(),
+    // Example placeholder for cart page
     // const Text('Search'),
     const Text('Services'), // Example placeholder for cart page
     const Text('Account'),

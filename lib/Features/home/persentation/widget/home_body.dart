@@ -63,7 +63,7 @@ class AdvertisingSection extends StatelessWidget {
                     "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRN8OtMi6SZMqKxDGJ2r-DP-f_T0bQ8wT3PDt0LWJHER9pezAIx",
                 aspectR: 16 / 5,
               ),
-              CardView(),
+              const CardView(),
               const ItemBanner(
                 imgurl:
                     "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSULkEU1cpVHmYdeDrcdtH5yqntFc3_iBZHdAb1KJt74WwPFcyI",
@@ -162,7 +162,7 @@ class AdvertisingSection extends StatelessWidget {
                 ),
               ),
               const SubcategorySection(),
-              ItemBanner(
+              const ItemBanner(
                   aspectR: 9 / 15,
                   imgurl:
                       "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQQj6HHUgPxiZk3IKoW3DlXyAZOjdgcFGLqss-WzBreRJK_35ow"),

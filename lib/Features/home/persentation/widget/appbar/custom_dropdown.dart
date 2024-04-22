@@ -1,17 +1,15 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_walmart/Features/home/persentation/widget/appbar/dropdown_list.dart';
 import 'package:flutter_walmart/core/utils/styles.dart';
 
 class ButtonWidget extends StatelessWidget {
   const ButtonWidget({
-    Key? key,
+    super.key,
     this.height = 48,
     this.width,
     this.onTap,
     this.child,
-  }) : super(key: key);
+  });
 
   final double? height;
   final double? width;
@@ -38,7 +36,7 @@ class ButtonWidget extends StatelessWidget {
 }
 
 class MenuWidget extends StatefulWidget {
-  const MenuWidget({Key? key, this.width, this.ontap}) : super(key: key);
+  const MenuWidget({super.key, this.width, this.ontap});
 
   final double? width;
   final void Function()? ontap;
@@ -57,18 +55,18 @@ class _MenuWidgetState extends State<MenuWidget> {
   ];
 
   List<Column> contanierwidget = [
-    Column(
+    const Column(
       children: [
-        const AddressContainer(
+        AddressContainer(
           title: 'Add an address for shipping',
         ),
-        const SizedBox(
+        SizedBox(
           height: 5,
         ),
         ShippingInfoContainer(),
       ],
     ),
-    Column(
+    const Column(
       children: [DeliveryContainer(), FulfillmentAddressCard()],
     ),
     const Column(
@@ -139,12 +137,12 @@ class _MenuWidgetState extends State<MenuWidget> {
                     child: Stack(
                       children: [
                         ClipOval(
-                          child: Container(
+                          child: SizedBox(
                             width: 80,
                             height: 80,
                             child: CircleAvatar(
                               backgroundColor: selectedIndex == index
-                                  ? Color(0xFFFFD700)
+                                  ? const Color(0xFFFFD700)
                                   // Highlight color
                                   : null,
                               child: CircleAvatar(
@@ -163,7 +161,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                           ),
                         ),
                         if (selectedIndex == index)
-                          Positioned(
+                          const Positioned(
                             height: 20,
                             child: Center(
                               child: CircleAvatar(
@@ -218,7 +216,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                 width: 200,
                 color: Colors.white,
               ),
-              Spacer(
+              const Spacer(
                 flex: 2,
               ),
             ],

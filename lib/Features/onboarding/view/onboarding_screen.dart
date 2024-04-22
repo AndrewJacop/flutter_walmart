@@ -24,7 +24,8 @@ class OnBoardingScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 32.0),
+                  padding: EdgeInsets.symmetric(
+                      vertical: DeviceUtils.getScreenHeight() * 0.03),
                   child: SvgPicture.asset(
                     "assets/svg/walmart_logo_spark.svg",
                     height: 32,
@@ -43,7 +44,7 @@ class OnBoardingScreen extends StatelessWidget {
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Padding(
-                          padding: const EdgeInsets.all(20.0),
+                          padding: const EdgeInsets.all(14.0),
                           child: SmoothPageIndicator(
                               controller: controller.pageController,
                               count: 3,
@@ -76,7 +77,7 @@ class OnBoardingScreen extends StatelessWidget {
                   imgLink: "assets/animations/ob3.json",
                   title: "Share your location",
                   subTitle:
-                      "We need to know your location for features like: Scan & Go, fuel discounts, pickup check in, delivery estimates and to show you nearby stores, items, and in-store services. Learn more..",
+                      "We need to know your location for features like: Scan & Go, fuel discounts, pickup check in, delivery estimates and to show you nearby stores.",
                 ),
               ],
             ),

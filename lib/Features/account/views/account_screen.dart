@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_walmart/Features/account/views/widgets/card_tile.dart';
 import 'package:flutter_walmart/Features/services/views/widgets/horizontal_card.dart';
 import 'package:flutter_walmart/common/widgets/custome_divider.dart';

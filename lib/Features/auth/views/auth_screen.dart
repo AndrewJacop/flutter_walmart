@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_walmart/Features/auth/controllers/signin_controller.dart';
 import 'package:flutter_walmart/Features/auth/views/login_screen.dart';
 import 'package:flutter_walmart/common/widgets/custom_blue_button.dart';
 import 'package:get/get.dart';
@@ -9,6 +10,7 @@ class AuthScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(SignInController());
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
@@ -56,8 +58,9 @@ class AuthScreen extends StatelessWidget {
                   children: [
                     Text("Email",
                         style: Theme.of(context).textTheme.labelLarge),
-                    const TextField(
-                      decoration: InputDecoration(
+                    TextField(
+                      controller: controller.email,
+                      decoration: const InputDecoration(
                         border: OutlineInputBorder(),
                       ),
                     ),

@@ -5,7 +5,6 @@ import 'package:flutter_walmart/Features/services/views/widgets/vertical_card.da
 import 'package:flutter_walmart/common/widgets/custome_divider.dart';
 import 'package:flutter_walmart/common/widgets/feedback_section.dart';
 import 'package:flutter_walmart/common/widgets/shadowed_container.dart';
-import 'package:flutter_walmart/common/widgets/subcategory_section.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class ServicesScreen extends StatelessWidget {

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_walmart/Features/auth/controllers/signin_controller.dart';
 import 'package:flutter_walmart/Features/home/persentation/home_view.dart';
 import 'package:flutter_walmart/common/widgets/custom_blue_button.dart';
 import 'package:get/get.dart';
@@ -11,6 +12,8 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(SignInController());
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
@@ -63,8 +66,9 @@ class LoginScreen extends StatelessWidget {
                   children: [
                     Text("Password",
                         style: Theme.of(context).textTheme.labelLarge),
-                    const TextField(
-                      decoration: InputDecoration(
+                    TextField(
+                      controller: controller.pass,
+                      decoration: const InputDecoration(
                         border: OutlineInputBorder(),
                       ),
                     ),
@@ -76,11 +80,7 @@ class LoginScreen extends StatelessWidget {
                 width: double.infinity,
                 padding: const EdgeInsets.symmetric(vertical: 20),
                 child: CustomBlueButton(
-                  title: "Sign in",
-
-                  /// onPress: () => Get.to(() => const HomeView()),
-                  onPress: () => Get.offAll(() => const HomeView()),
-                ),
+                    title: "Sign in", onPress: () => {controller.signMeIn()}),
               ),
             ],
           ),

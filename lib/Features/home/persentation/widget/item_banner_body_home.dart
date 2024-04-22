@@ -5,11 +5,10 @@ class ItemBanner extends StatelessWidget {
   final double aspectR;
 
   const ItemBanner(
-      {Key? key,
+      {super.key,
       this.imgurl =
           "https://m.media-amazon.com/images/I/61wJXyIAKwL.__AC_SX300_SY300_QL70_FMwebp_.jpg",
-      required this.aspectR})
-      : super(key: key);
+      required this.aspectR});
 
   @override
   Widget build(BuildContext context) {

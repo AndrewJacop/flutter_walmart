@@ -1,11 +1,15 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+<<<<<<< HEAD:lib/common/widget/product_subcategory.dart
 import 'package:flutter_walmart/Features/Product/data/model/Product_model.dart';
 import 'package:flutter_walmart/Features/Product/logic/products_get.dart';
 import 'package:flutter_walmart/Features/Product/presentation/products.dart';
 import 'package:flutter_walmart/Features/products_details/data/model/products_detailes.dart';
 import 'package:flutter_walmart/Features/products_details/logic/get_products_detailes.dart';
 import 'package:flutter_walmart/common/widget/custom_button.dart';
+=======
+import 'package:flutter_walmart/common/widgets/custom_button.dart';
+>>>>>>> andrew:lib/common/widgets/product_subcategory.dart
 import 'package:flutter_walmart/core/utils/styles.dart';
 import 'package:get/get.dart';
 
@@ -15,6 +19,7 @@ class SubProductCard extends StatelessWidget {
   final ProductsModel product;
   final ProductsController favoriteController = Get.put(ProductsController());
 
+<<<<<<< HEAD:lib/common/widget/product_subcategory.dart
   SubProductCard({
     Key? key,
     required this.product,
@@ -45,9 +50,55 @@ class SubProductCard extends StatelessWidget {
                 Text(
                   'Price: \$${product.originalPrice!}',
                   style: TextStyle(
+=======
+  const SubProductCard({
+    super.key,
+    required this.productId,
+    required this.productName,
+    required this.price,
+    this.salePrice,
+    required this.imgurl,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () {
+        // Handle tap
+      },
+      child: SizedBox(
+        width: 200,
+        height: 100, // Adjust height as needed
+
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(
+                child: AspectRatio(
+                  aspectRatio: 11 / 10,
+                  child: Image.network(
+                    imgurl!,
+                  ),
+                ),
+              ),
+              const SizedBox(height: 8.0),
+              Text(
+                'Price: \$${price.toStringAsFixed(2)}',
+                style: const TextStyle(
+                  fontSize: 14.0,
+                ),
+              ),
+              if (salePrice != null)
+                Text(
+                  'Sale Price: \$${salePrice!.toStringAsFixed(2)}',
+                  style: const TextStyle(
+>>>>>>> andrew:lib/common/widgets/product_subcategory.dart
                     fontSize: 14.0,
                   ),
                 ),
+<<<<<<< HEAD:lib/common/widget/product_subcategory.dart
                 if (product.discount != 0)
                   Text(
                     'Sale Price: \$${product.discount!.toStringAsFixed(2)}',
@@ -122,6 +173,21 @@ class SubProductCard extends StatelessWidget {
                   )),
             ),
           ],
+=======
+              const SizedBox(height: 4.0),
+              Text(
+                productName,
+                style: Styles.textStyle14,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+              ),
+              const CustomButton(
+                title: "Option",
+                width: 100,
+              )
+            ],
+          ),
+>>>>>>> andrew:lib/common/widgets/product_subcategory.dart
         ),
       ),
     );

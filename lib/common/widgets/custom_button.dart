@@ -4,32 +4,32 @@ import 'package:flutter_walmart/core/utils/styles.dart';
 class CustomButton extends StatelessWidget {
   final String title;
   final double width;
-  void Function()? ontap;
 
-  CustomButton({
-    Key? key,
+  const CustomButton({
+    super.key,
     required this.title,
-    this.ontap,
     this.width =
         double.infinity, // Default width is set to fill available space
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: width,
       child: ElevatedButton(
-        onPressed: ontap,
+        onPressed: () {
+          // Handle button press
+        },
         style: ButtonStyle(
           backgroundColor: MaterialStateProperty.all(Colors.white),
           padding: MaterialStateProperty.all(
-            EdgeInsets.symmetric(horizontal: 22.0, vertical: 7.0),
+            const EdgeInsets.symmetric(horizontal: 22.0, vertical: 7.0),
           ),
           shape: MaterialStateProperty.all(
             RoundedRectangleBorder(
               borderRadius:
                   BorderRadius.circular(20.0), // Adjust the radius as needed
-              side: BorderSide(
+              side: const BorderSide(
                 color: Colors.black, // Define border color
                 width: 1.0, // Define border width
               ),
@@ -38,7 +38,7 @@ class CustomButton extends StatelessWidget {
         ),
         child: Text(
           title,
-          style: Styles.textStyle18.copyWith(color: Colors.black),
+          style: Styles.textStyle16.copyWith(color: Colors.black),
         ),
       ),
     );

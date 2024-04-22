@@ -28,7 +28,7 @@ class AddressContainer extends StatelessWidget {
                       Icons.location_on,
                       size: 20,
                     ),
-                    SizedBox(width: 8),
+                    const SizedBox(width: 8),
                     Text(
                       title,
                       // "Add an address for shipping",
@@ -72,6 +72,8 @@ class AddressContainer extends StatelessWidget {
 }
 
 class ShippingInfoContainer extends StatelessWidget {
+  const ShippingInfoContainer({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -188,6 +190,8 @@ class DeliveryContainer extends StatelessWidget {
 }
 
 class FulfillmentAddressCard extends StatelessWidget {
+  const FulfillmentAddressCard({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -206,7 +210,7 @@ class FulfillmentAddressCard extends StatelessWidget {
             const SizedBox(height: 8),
             const Text('To see pickup times, please sign in.',
                 style: Styles.textStyle14),
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
             SizedBox(
               width: 300,
               child: ElevatedButton(

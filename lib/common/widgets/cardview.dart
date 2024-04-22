@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_walmart/core/utils/styles.dart';
 
 class CardView extends StatelessWidget {
+  const CardView({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -16,7 +18,7 @@ class CardView extends StatelessWidget {
               color: Colors.grey.withOpacity(0.5),
               spreadRadius: 2,
               blurRadius: 4,
-              offset: Offset(0, 2), // changes position of shadow
+              offset: const Offset(0, 2), // changes position of shadow
             ),
           ],
         ),
@@ -36,9 +38,9 @@ class CardView extends StatelessWidget {
                   ),
                   Column(
                     children: [
-                      Text('Get a personalized experience',
+                      const Text('Get a personalized experience',
                           style: Styles.textStyle14),
-                      SizedBox(height: 8.0),
+                      const SizedBox(height: 8.0),
                       SizedBox(
                         child: ElevatedButton(
                           onPressed: () {
@@ -48,14 +50,14 @@ class CardView extends StatelessWidget {
                             backgroundColor:
                                 MaterialStateProperty.all(Colors.white),
                             padding: MaterialStateProperty.all(
-                              EdgeInsets.symmetric(
+                              const EdgeInsets.symmetric(
                                   horizontal: 22.0, vertical: 7.0),
                             ),
                             shape: MaterialStateProperty.all(
                               RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(
                                     20.0), // Adjust the radius as needed
-                                side: BorderSide(
+                                side: const BorderSide(
                                     color: Colors.black,
                                     width:
                                         1.0), // Define border color and width

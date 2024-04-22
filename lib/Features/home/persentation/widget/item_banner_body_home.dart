@@ -12,9 +12,10 @@ class ItemBanner extends StatelessWidget {
   final String shopnow;
 
   const ItemBanner(
-      {Key? key,
+      {super.key,
       this.imgurl =
           "https://m.media-amazon.com/images/I/61wJXyIAKwL.__AC_SX300_SY300_QL70_FMwebp_.jpg",
+<<<<<<< HEAD
       required this.aspectR,
       this.onSale = false,
       this.originalPrice = "",
@@ -22,6 +23,9 @@ class ItemBanner extends StatelessWidget {
       this.shopnow = "",
       this.urlhref})
       : super(key: key);
+=======
+      required this.aspectR});
+>>>>>>> andrew
 
   @override
   Widget build(BuildContext context) {

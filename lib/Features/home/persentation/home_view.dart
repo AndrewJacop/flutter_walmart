@@ -1,15 +1,24 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+<<<<<<< HEAD
 
 import 'package:flutter_walmart/Features/home/persentation/widget/home_body.dart';
 
 import 'package:flutter_walmart/Features/home/persentation/widget/appbar/custom_head_body.dart';
 
+=======
+import 'package:flutter_walmart/Features/account/views/account_screen.dart';
+import 'package:flutter_walmart/Features/home/persentation/widget/home_body.dart';
+import 'package:flutter_walmart/Features/home/persentation/widget/appbar/custom_head_body.dart';
+import 'package:flutter_walmart/Features/mylists/view/my_list_screen.dart';
+import 'package:flutter_walmart/Features/search/views/search_screen.dart';
+import 'package:flutter_walmart/Features/services/views/services_screen.dart';
+>>>>>>> andrew
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:http/http.dart' as http;
 
 class HomeView extends StatefulWidget {
-  const HomeView({Key? key}) : super(key: key);
+  const HomeView({super.key});
 
   @override
   State<HomeView> createState() => _HomeViewState();
@@ -20,12 +29,20 @@ class _HomeViewState extends State<HomeView> {
 
   static final List<Widget> _widgetOptions = <Widget>[
     // Replace this with your actual home content widget
+<<<<<<< HEAD
     AdvertisingSection(), // Example placeholder for search page
     // const Myitems(),
     // Example placeholder for cart page
     // const Text('Search'),
     const Text('Services'), // Example placeholder for cart page
     const Text('Account'),
+=======
+    const AdvertisingSection(), // Example placeholder for search page
+    const MyListsScreen(), // Example placeholder for cart page
+    const SearchScreen(),
+    const ServicesScreen(), // Example placeholder for cart page
+    const AccountScreen(),
+>>>>>>> andrew
     // Example placeholder for profile page
   ];
 
@@ -57,6 +74,32 @@ class _HomeViewState extends State<HomeView> {
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
+<<<<<<< HEAD
+=======
+        items: <BottomNavigationBarItem>[
+          _buildBottomNavigationBarItem(
+            // ignore: deprecated_member_use
+            icon: FontAwesomeIcons.store,
+            label: 'Home',
+          ),
+          _buildBottomNavigationBarItem(
+            icon: FontAwesomeIcons.inbox,
+            label: 'My Items',
+          ),
+          _buildBottomNavigationBarItem(
+            icon: FontAwesomeIcons.magnifyingGlass,
+            label: 'Search',
+          ),
+          _buildBottomNavigationBarItem(
+            icon: FontAwesomeIcons.grip,
+            label: 'Services',
+          ),
+          _buildBottomNavigationBarItem(
+            icon: FontAwesomeIcons.circleUser,
+            label: 'Account',
+          ),
+        ],
+>>>>>>> andrew
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.blue,
         unselectedItemColor: Colors.black,

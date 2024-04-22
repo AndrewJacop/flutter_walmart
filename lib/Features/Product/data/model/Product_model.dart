@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 
 class ProductsModel {
   final RxInt count = 0.obs;
+  final RxBool myitems = false.obs;
   String id;
   final String title;
   final List<String> images;
@@ -55,5 +56,9 @@ class ProductsModel {
 
   void decrease() {
     count.value--;
+  }
+
+  void toggleFavorite() {
+    myitems.toggle();
   }
 }

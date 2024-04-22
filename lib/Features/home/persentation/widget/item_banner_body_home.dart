@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -33,12 +34,20 @@ class ItemBanner extends StatelessWidget {
         child: Stack(
           children: [
             AspectRatio(
-              aspectRatio: aspectR,
-              child: Image.network(
-                imgurl,
-                fit: BoxFit.fill,
-              ),
-            ),
+                aspectRatio: aspectR,
+                child: CachedNetworkImage(
+                  placeholderFadeInDuration: Duration.zero,
+                  placeholder: (context, url) =>
+                      const CircularProgressIndicator(),
+                  errorWidget: (context, url, error) => const Icon(Icons.error),
+                  imageUrl: imgurl,
+                  fit: BoxFit.fill,
+                )
+                // Image.network(
+                //   imgurl,
+                //   fit: BoxFit.fill,
+                // ),
+                ),
             Positioned(
               top: 1.0,
               left: 3,

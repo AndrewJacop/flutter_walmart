@@ -10,12 +10,29 @@ class ProductsController extends GetxController {
 
   final productsList =
       <ProductsModel>[].obs; // Observable list to hold ads data
+  // final RxBool isFavorite = false.obs;
+  RxList<ProductsModel> favoratelist = <ProductsModel>[].obs;
 
   @override
   void onInit() {
     super.onInit();
     productsRepo = ProductsIml(ApiService());
     fetchproducts(); // Fetch ads data when controller initializes
+  }
+
+  void addmylist(ProductsModel product) {
+    var existingProductIndex =
+        favoratelist.indexWhere((item) => item.id == product.id);
+
+    if (existingProductIndex != -1) {
+      favoratelist[existingProductIndex].toggleFavorite();
+      favoratelist.removeAt(existingProductIndex);
+    } else {
+      product.toggleFavorite();
+      favoratelist.add(product);
+    }
+
+    // addToSum(product);
   }
 
   void fetchproducts() async {

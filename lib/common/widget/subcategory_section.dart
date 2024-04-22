@@ -51,7 +51,7 @@ class FooterSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 343,
+      height: 350,
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         child: Row(

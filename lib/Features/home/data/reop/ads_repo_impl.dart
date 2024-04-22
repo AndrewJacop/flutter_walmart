@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 
-import 'package:flutter_walmart/Features/home/data/model/ads_model.dart';
-import 'package:flutter_walmart/Features/home/data/reop/ads_repo.dart';
+import 'package:flutter_walmart/features/home/data/model/ads_model.dart';
+import 'package:flutter_walmart/features/home/data/reop/ads_repo.dart';
 import 'package:flutter_walmart/core/utils/api_sevice.dart';
 import 'package:flutter_walmart/core/utils/failures.dart';
 
@@ -12,7 +12,7 @@ class AdsImpl implements AdsRepo {
 
   @override
   Future<Either<Failure, List<AdsModel>>> adslunch() async {
-    var data = await apiService.get(endPoint: 'ads') as List<dynamic>;
+    var data = await apiService.get(endPoint: 'ads');
 
     try {
       List<AdsModel> adslist = [];

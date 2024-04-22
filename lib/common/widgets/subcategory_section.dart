@@ -1,42 +1,25 @@
 import 'package:flutter/material.dart';
-<<<<<<< HEAD:lib/common/widget/subcategory_section.dart
-import 'package:flutter_walmart/Features/Product/data/model/Product_model.dart';
-import 'package:flutter_walmart/common/widget/product_subcategory.dart';
+import 'package:flutter_walmart/common/widgets/product_subcategory.dart';
+import 'package:flutter_walmart/features/Product/data/model/Product_model.dart';
 import 'package:flutter_walmart/core/utils/app_router.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:http/http.dart';
 
 class SubcategorySection extends StatelessWidget {
   final String categoryname;
   final String subcategories;
   const SubcategorySection(
-      {Key? key,
+      {super.key,
       required this.productsitems,
       required this.categoryname,
-      required this.subcategories})
-      : super(key: key);
+      required this.subcategories});
   final List<ProductsModel> productsitems;
-=======
-import 'package:flutter_walmart/common/widgets/product_subcategory.dart';
-
-class SubcategorySection extends StatefulWidget {
-  const SubcategorySection({super.key});
->>>>>>> andrew:lib/common/widgets/subcategory_section.dart
 
   @override
   Widget build(BuildContext context) {
-<<<<<<< HEAD:lib/common/widget/subcategory_section.dart
     return Padding(
-      padding: EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(8.0),
       child: SizedBox(
         height: 410,
-=======
-    return const Padding(
-      padding: EdgeInsets.all(8.0),
-      child: SizedBox(
-        height: 426,
->>>>>>> andrew:lib/common/widgets/subcategory_section.dart
         width: 389,
         child: Column(
           children: [
@@ -73,22 +56,9 @@ class FooterSection extends StatelessWidget {
             SizedBox(
               width: MediaQuery.of(context).size.width,
               child: ListView.builder(
-<<<<<<< HEAD:lib/common/widget/subcategory_section.dart
                 itemBuilder: (context, index) =>
                     SubProductCard(product: productsitems[index]),
                 itemCount: productsitems.length,
-=======
-                itemBuilder: (context, index) => const SubProductCard(
-                  imgurl:
-                      "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcT2CveDtHqPTwST3VbNziXdwJe4dccKKnD8S18nQrLjFodGTF3H",
-                  productId: "2177583020",
-                  productName:
-                      "PayLessHere 5 Inch Memory Foam Mattress/Cooling Gel Bamboo Charcoal Infused Mattress/Medium Firm Mattresses/CertiPUR-US Certified/Bed-in-a-Box/Pressure Relieving Full Size, White",
-                  price: 299.99, // Example price
-                  salePrice: 249.99, // Example sale price
-                ),
-                itemCount: 5,
->>>>>>> andrew:lib/common/widgets/subcategory_section.dart
                 scrollDirection: Axis.horizontal,
               ),
             )
@@ -130,7 +100,7 @@ class HeadSection extends StatelessWidget {
               ),
               Text(
                 subcat, // Replace with your subcategories text
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 14,
                   color: Colors.grey,
                 ),

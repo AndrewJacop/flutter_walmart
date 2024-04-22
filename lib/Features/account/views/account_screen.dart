@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_walmart/Features/account/views/widgets/card_tile.dart';
-import 'package:flutter_walmart/Features/services/views/widgets/horizontal_card.dart';
+import 'package:flutter_walmart/features/account/views/widgets/card_tile.dart';
+import 'package:flutter_walmart/features/services/views/widgets/horizontal_card.dart';
 import 'package:flutter_walmart/common/widgets/custome_divider.dart';
 import 'package:flutter_walmart/common/widgets/feedback_section.dart';
 import 'package:flutter_walmart/common/widgets/shadowed_container.dart';

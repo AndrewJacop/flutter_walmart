@@ -8,18 +8,18 @@ class CustomButton extends StatelessWidget {
   const CustomButton({
     super.key,
     required this.title,
-    this.width =
-        double.infinity, // Default width is set to fill available space
+    this.width = double.infinity,
+    this.ontap, // Default width is set to fill available space
   });
+
+  final void Function()? ontap;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: width,
       child: ElevatedButton(
-        onPressed: () {
-          // Handle button press
-        },
+        onPressed: ontap,
         style: ButtonStyle(
           backgroundColor: MaterialStateProperty.all(Colors.white),
           padding: MaterialStateProperty.all(

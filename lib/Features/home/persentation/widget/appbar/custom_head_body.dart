@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
-
-=======
->>>>>>> andrew
-import 'package:flutter_walmart/Features/home/persentation/widget/appbar/custom_dropdown.dart';
-import 'package:flutter_walmart/Features/home/persentation/widget/appbar/custom_seacrch.dart';
-import 'package:flutter_walmart/Features/home/persentation/widget/appbar/appbar.dart';
+import 'package:flutter_walmart/features/home/persentation/widget/appbar/custom_dropdown.dart';
+import 'package:flutter_walmart/features/home/persentation/widget/appbar/custom_seacrch.dart';
+import 'package:flutter_walmart/features/home/persentation/widget/appbar/appbar.dart';
 import 'package:flutter_walmart/core/utils/styles.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -56,7 +52,7 @@ class CustomAppBar extends StatelessWidget {
                       width: 30,
                       onTap: onTap,
                       child: Row(children: [
-                        Padding(
+                        const Padding(
                           padding: EdgeInsets.only(left: 10, right: 10),
                           child: CircleAvatar(
                             radius: 15.0,
@@ -66,7 +62,7 @@ class CustomAppBar extends StatelessWidget {
                             backgroundColor: Colors.transparent,
                           ),
                         ),
-                        Spacer(
+                        const Spacer(
                           flex: 2,
                         ),
                         Text(
@@ -79,10 +75,10 @@ class CustomAppBar extends StatelessWidget {
                           style:
                               Styles.textStyle14.copyWith(color: Colors.white),
                         ),
-                        Spacer(
+                        const Spacer(
                           flex: 5,
                         ),
-                        Padding(
+                        const Padding(
                           padding: EdgeInsets.all(8.0),
                           child: Icon(
                             FontAwesomeIcons.chevronDown,

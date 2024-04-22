@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_walmart/common/widgets/button_enmation.dart';
 
-import 'package:flutter_walmart/Features/Product/data/model/Product_model.dart';
-import 'package:flutter_walmart/Features/cart/logic/get_cart.dart';
+import 'package:flutter_walmart/features/Product/data/model/Product_model.dart';
+import 'package:flutter_walmart/features/cart/logic/get_cart.dart';
 
-import 'package:flutter_walmart/Features/home/persentation/widget/appbar/custom_seacrch.dart';
-import 'package:flutter_walmart/common/widget/button_enmation.dart';
+import 'package:flutter_walmart/features/home/persentation/widget/appbar/custom_seacrch.dart';
 import 'package:flutter_walmart/core/utils/styles.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 
 class Cart extends StatelessWidget {
   final CartController cartController = Get.find<CartController>();
-  Cart({Key? key}) : super(key: key);
+  Cart({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class Cart extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.blue,
-          title: CustomSearch(),
+          title: const CustomSearch(),
         ),
         body: Stack(children: [
           CustomScrollView(
@@ -35,8 +35,8 @@ class Cart extends StatelessWidget {
                         children: [
                           Row(
                             children: [
-                              Text("Cart"),
-                              SizedBox(
+                              const Text("Cart"),
+                              const SizedBox(
                                 width: 5,
                               ),
                               Obx(() => Text(
@@ -44,8 +44,8 @@ class Cart extends StatelessWidget {
                                   )),
                             ],
                           ),
-                          CardView3(),
-                          FulfillmentZone(),
+                          const CardView3(),
+                          const FulfillmentZone(),
                           ProductsCart(
                             cartItems: cartController.cartItems,
                           )
@@ -74,7 +74,7 @@ class Cart extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 15),
+                          padding: const EdgeInsets.symmetric(horizontal: 15),
                           child: Obx(() => Text(
                                 "Estimated total ${cartController.cartItems.length} of ${cartController.cartItems.length} items",
                               )),
@@ -92,7 +92,7 @@ class Cart extends StatelessWidget {
                               style: Styles.textStyle18.copyWith(
                                   fontWeight: FontWeight.w400, fontSize: 16),
                             )),
-                        SizedBox(
+                        const SizedBox(
                           width: 10,
                         ),
                         // Obx(() => Text(
@@ -140,6 +140,8 @@ class Cart extends StatelessWidget {
 }
 
 class CardView3 extends StatelessWidget {
+  const CardView3({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -155,7 +157,7 @@ class CardView3 extends StatelessWidget {
               color: Colors.grey.withOpacity(0.5),
               spreadRadius: 2,
               blurRadius: 4,
-              offset: Offset(0, 2), // changes position of shadow
+              offset: const Offset(0, 2), // changes position of shadow
             ),
           ],
         ),
@@ -195,6 +197,8 @@ class CardView3 extends StatelessWidget {
 }
 
 class FulfillmentZone extends StatelessWidget {
+  const FulfillmentZone({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -256,12 +260,12 @@ class FulfillmentTile extends StatelessWidget {
   final bool selected;
 
   const FulfillmentTile({
-    Key? key,
+    super.key,
     required this.iconUrl,
     required this.title,
     required this.subtitle,
     this.selected = false,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -287,7 +291,7 @@ class FulfillmentTile extends StatelessWidget {
               height: 50,
               width: 50,
             ),
-            SizedBox(height: 4),
+            const SizedBox(height: 4),
             Center(
                 child: Text(
               title,
@@ -308,7 +312,7 @@ class FulfillmentTile extends StatelessWidget {
 }
 
 class ProductsCart extends StatefulWidget {
-  const ProductsCart({Key? key, required this.cartItems}) : super(key: key);
+  const ProductsCart({super.key, required this.cartItems});
   final List<ProductsModel> cartItems;
   @override
   State<ProductsCart> createState() => _ProductsCartState();
@@ -344,7 +348,7 @@ class _ProductsCartState extends State<ProductsCart> {
                       color: Colors.grey.withOpacity(0.5),
                       spreadRadius: 2,
                       blurRadius: 4,
-                      offset: Offset(0, 2), // changes position of shadow
+                      offset: const Offset(0, 2), // changes position of shadow
                     ),
                   ],
                 ),
@@ -411,9 +415,10 @@ class _ProductsCartState extends State<ProductsCart> {
                             final product = widget.cartItems[index];
 
                             return Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 5),
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 5),
                               child: Image.network(
-                                "${product.images[0]}" ??
+                                product.images[0] ??
                                     "https://i5.walmartimages.com/asr/7c542df3-e6b3-4b7a-8dfa-ad252d411dcb.2c1e103d237d8914cfb584ad4a5d828c.jpeg?odnHeight=117&odnWidth=117&odnBg=FFFFFF",
                                 width: 50,
                               ),
@@ -440,7 +445,7 @@ class _ProductsCartState extends State<ProductsCart> {
                               )
                             ],
                           )),
-                      SizedBox(
+                      const SizedBox(
                         height: 40,
                       )
                     ],
@@ -450,7 +455,7 @@ class _ProductsCartState extends State<ProductsCart> {
                       Row(
                         children: [
                           Text("${widget.cartItems.length} items selected"),
-                          SizedBox(
+                          const SizedBox(
                             width: 10,
                           ),
                           InkWell(
@@ -462,7 +467,7 @@ class _ProductsCartState extends State<ProductsCart> {
                           )
                         ],
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       SizedBox(
@@ -470,10 +475,9 @@ class _ProductsCartState extends State<ProductsCart> {
                         child: ListView.builder(
                           shrinkWrap: true,
                           scrollDirection: Axis.vertical,
-                          physics: NeverScrollableScrollPhysics(),
+                          physics: const NeverScrollableScrollPhysics(),
                           itemBuilder: (context, index) {
-                            final product =
-                                widget.cartItems[index] as ProductsModel;
+                            final product = widget.cartItems[index];
                             final quantity =
                                 widget.cartItems[index].count.value;
                             return PrpductsShow(
@@ -517,10 +521,10 @@ class _ProductsCartState extends State<ProductsCart> {
 
 class PrpductsShow extends StatefulWidget {
   const PrpductsShow({
-    Key? key,
+    super.key,
     required this.product,
     required this.quantity,
-  }) : super(key: key);
+  });
 
   final ProductsModel product;
   final int quantity;
@@ -542,14 +546,14 @@ class _PrpductsShowState extends State<PrpductsShow> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Image.network(
-                "${widget.product.images[0]}",
+                widget.product.images[0],
                 width: 50,
               ),
-              Container(
+              SizedBox(
                 width: MediaQuery.of(context).size.width / 2,
                 height: 70,
                 child: Text(
-                  "${widget.product.title}",
+                  widget.product.title,
                   overflow: TextOverflow.ellipsis,
                   maxLines: 3,
                 ),
@@ -557,7 +561,7 @@ class _PrpductsShowState extends State<PrpductsShow> {
               Text(' \$${widget.product.originalPrice}')
             ],
           ),
-          SizedBox(height: 5),
+          const SizedBox(height: 5),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -565,7 +569,7 @@ class _PrpductsShowState extends State<PrpductsShow> {
                 onTap: () {
                   _cartController.removeFromCart(widget.product);
                 },
-                child: Text(
+                child: const Text(
                   "remove",
                   style: TextStyle(decoration: TextDecoration.underline),
                 ),
@@ -574,7 +578,7 @@ class _PrpductsShowState extends State<PrpductsShow> {
                 onTap: () {
                   // Implement your logic to save for later
                 },
-                child: Text(
+                child: const Text(
                   "Save for later",
                   style: TextStyle(decoration: TextDecoration.underline),
                 ),

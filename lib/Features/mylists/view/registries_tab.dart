@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_walmart/Features/mylists/view/widgets/backdrop_card.dart';
+import 'package:flutter_walmart/features/mylists/view/widgets/backdrop_card.dart';
 import 'package:flutter_walmart/common/widgets/custom_blue_button.dart';
 import 'package:flutter_walmart/common/widgets/custom_outline_button.dart';
 import 'package:flutter_walmart/common/widgets/feedback_section.dart';

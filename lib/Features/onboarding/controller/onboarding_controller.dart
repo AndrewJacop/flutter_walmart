@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_walmart/Features/home/persentation/home_view.dart';
+import 'package:flutter_walmart/features/home/persentation/home_view.dart';
 import 'package:get/get.dart';
 
 class OnBoardingController extends GetxController {

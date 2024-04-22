@@ -1,5 +1,5 @@
-import 'package:flutter_walmart/Features/search/data/departments_repo.dart';
-import 'package:flutter_walmart/Features/search/models/department_model.dart';
+import 'package:flutter_walmart/features/search/data/departments_repo.dart';
+import 'package:flutter_walmart/features/search/models/department_model.dart';
 import 'package:get/get.dart';
 
 class DepartmentController extends GetxController {

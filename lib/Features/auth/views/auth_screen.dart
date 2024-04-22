@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutter_walmart/Features/auth/controllers/signin_controller.dart';
-import 'package:flutter_walmart/Features/auth/views/login_screen.dart';
+import 'package:flutter_walmart/features/auth/controllers/signin_controller.dart';
+import 'package:flutter_walmart/features/auth/views/login_screen.dart';
 import 'package:flutter_walmart/common/widgets/custom_blue_button.dart';
 import 'package:get/get.dart';
 

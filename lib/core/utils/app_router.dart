@@ -1,7 +1,7 @@
-import 'package:flutter_walmart/Features/Product/presentation/products.dart';
-import 'package:flutter_walmart/Features/cart/presentation/cart.dart';
-import 'package:flutter_walmart/Features/home/persentation/category_product.dart';
-import 'package:flutter_walmart/Features/home/persentation/home_view.dart';
+import 'package:flutter_walmart/features/Product/presentation/products.dart';
+import 'package:flutter_walmart/features/cart/presentation/cart.dart';
+import 'package:flutter_walmart/features/home/persentation/category_product.dart';
+import 'package:flutter_walmart/features/home/persentation/home_view.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
 
 abstract class AppRouter {
@@ -21,7 +21,7 @@ abstract class AppRouter {
     GetPage(
       name: kproductsview,
       page: () => ProductView(
-        itemsview: [],
+        itemsview: const [],
       ),
     ),
     // Define other routes if needed

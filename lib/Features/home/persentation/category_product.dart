@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_walmart/Features/Product/data/model/Product_model.dart';
-import 'package:flutter_walmart/Features/Product/presentation/rating.dart';
-import 'package:flutter_walmart/Features/home/persentation/widget/appbar/custom_seacrch.dart';
+import 'package:flutter_walmart/common/widgets/button_enmation.dart';
+import 'package:flutter_walmart/features/Product/data/model/Product_model.dart';
+import 'package:flutter_walmart/features/Product/presentation/rating.dart';
+import 'package:flutter_walmart/features/home/persentation/widget/appbar/custom_seacrch.dart';
 import 'package:flutter_walmart/common/data/category_get.dart';
-import 'package:flutter_walmart/common/widget/button_enmation.dart';
 import 'package:flutter_walmart/core/utils/assets.dart';
 import 'package:flutter_walmart/core/utils/styles.dart';
 import 'package:get/get.dart';
 
 class ProductView extends StatelessWidget {
-  ProductView({Key? key, required this.itemsview}) : super(key: key);
+  const ProductView({super.key, required this.itemsview});
   final List<ProductsModel> itemsview;
 
   @override
@@ -18,9 +18,9 @@ class ProductView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue,
-        title: CustomSearch(),
+        title: const CustomSearch(),
       ),
-      body: items != null && items.isNotEmpty
+      body: items.isNotEmpty
           ? ListView.builder(
               itemCount: items.length,
               scrollDirection: Axis.vertical,
@@ -37,8 +37,7 @@ class ProductView extends StatelessWidget {
 }
 
 class ProductsCategoryShow extends StatelessWidget {
-  ProductsCategoryShow({Key? key, required this.itemsproduct})
-      : super(key: key);
+  ProductsCategoryShow({super.key, required this.itemsproduct});
   final ProductsModel itemsproduct;
   final CategoriesController controller = Get.find<CategoriesController>();
   @override
@@ -73,15 +72,15 @@ class ProductsCategoryShow extends StatelessWidget {
                   overflow: TextOverflow.ellipsis,
                   maxLines: 3,
                 ),
-                Ratingcategory(
+                const Ratingcategory(
                   rating: 4.3,
                 ),
-                Text(
+                const Text(
                   "Delivery today",
                   style: Styles.textStyle14,
                   textAlign: TextAlign.left,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 30,
                 ),
                 Obx(

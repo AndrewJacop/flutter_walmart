@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_walmart/Features/mylists/view/lists_tab.dart';
-import 'package:flutter_walmart/Features/mylists/view/registries_tab.dart';
-import 'package:flutter_walmart/Features/mylists/view/reorder_tab.dart';
+import 'package:flutter_walmart/features/mylists/view/lists_tab.dart';
+import 'package:flutter_walmart/features/mylists/view/registries_tab.dart';
+import 'package:flutter_walmart/features/mylists/view/reorder_tab.dart';
 
 class MyListsScreen extends StatelessWidget {
   const MyListsScreen({super.key});

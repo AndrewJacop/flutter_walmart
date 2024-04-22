@@ -1,4 +1,4 @@
-import 'package:flutter_walmart/Features/Product/data/model/Product_model.dart';
+import 'package:flutter_walmart/features/Product/data/model/Product_model.dart';
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
 
 class CartModel {

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_walmart/Features/services/views/widgets/circular_icon.dart';
+import 'package:flutter_walmart/features/services/views/widgets/circular_icon.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class HorizontalCard extends StatelessWidget {

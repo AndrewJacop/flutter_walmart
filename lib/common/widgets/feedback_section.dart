@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_walmart/Features/feedback/feedback_screen.dart';
+import 'package:flutter_walmart/features/feedback/feedback_screen.dart';
 import 'package:flutter_walmart/common/widgets/custom_outline_button.dart';
 import 'package:get/get.dart';
 

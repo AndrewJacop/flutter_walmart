@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:flutter_walmart/Features/Product/logic/get_products.dart';
+import 'package:flutter_walmart/features/Product/logic/get_products.dart';
 
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
@@ -20,7 +20,7 @@ class ProductCarousel extends StatelessWidget {
           enlargeCenterPage: false, // Center item will be larger
           autoPlay: false, // Auto play the carousel
           // Duration for auto play
-          autoPlayAnimationDuration: Duration(milliseconds: 800),
+          autoPlayAnimationDuration: const Duration(milliseconds: 800),
           // Animation duration for auto play
           pauseAutoPlayOnTouch:
               true, // Pause auto play when user touches the carousel
@@ -31,7 +31,7 @@ class ProductCarousel extends StatelessWidget {
         items: listimage?.map((url) {
               return Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Container(
+                child: SizedBox(
                   width: MediaQuery.of(context).size.width,
                   height: 1000,
                   child: Center(
@@ -76,7 +76,7 @@ class ProductCarousel extends StatelessWidget {
                       control.carousalCurrentIndex.value = i;
                     },
                     child: Container(
-                      margin: EdgeInsets.all(3),
+                      margin: const EdgeInsets.all(3),
                       width: 10,
                       height: 10,
                       decoration: BoxDecoration(

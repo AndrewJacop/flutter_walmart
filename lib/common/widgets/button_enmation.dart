@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_walmart/Features/Product/data/model/Product_model.dart';
-import 'package:flutter_walmart/Features/cart/logic/get_cart.dart';
+import 'package:flutter_walmart/features/Product/data/model/Product_model.dart';
+import 'package:flutter_walmart/features/cart/logic/get_cart.dart';
 import 'package:flutter_walmart/core/utils/styles.dart';
 import 'package:get/get.dart';
 
 class AnimatedNumber extends StatelessWidget {
   final ProductsModel productsid;
 
-  AnimatedNumber({required this.productsid});
+  const AnimatedNumber({super.key, required this.productsid});
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +38,7 @@ class AnimatedNumber extends StatelessWidget {
             ),
             Obx(() {
               return Text(
-                '${productsid.count.value ?? 0}',
+                '${productsid.count.value}',
                 style: Styles.textStyle18.copyWith(),
               );
             }),
@@ -46,7 +46,7 @@ class AnimatedNumber extends StatelessWidget {
               onTap: () {
                 cartController.addToCart(productsid);
               },
-              child: Text(
+              child: const Text(
                 '+',
                 style: Styles.textStyle18,
               ),

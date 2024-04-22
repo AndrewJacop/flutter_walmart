@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter_walmart/Features/Product/data/model/Product_model.dart';
-import 'package:flutter_walmart/Features/Product/data/reop/product_repo.dart';
-import 'package:flutter_walmart/Features/products_details/data/model/products_detailes.dart';
+import 'package:flutter_walmart/features/Product/data/model/Product_model.dart';
+import 'package:flutter_walmart/features/Product/data/reop/product_repo.dart';
+import 'package:flutter_walmart/features/products_details/data/model/products_detailes.dart';
 
 import 'package:flutter_walmart/core/utils/api_sevice.dart';
 import 'package:flutter_walmart/core/utils/failures.dart';
@@ -68,7 +68,7 @@ class ProductsIml implements ProductsRepo {
   @override
   Future<Either<Failure, ProductsDetailes>> productsdetailes(String id) async {
     print("////////////////////////id///////////");
-    print("$id");
+    print(id);
     var data = await apiService.getsingle(endPoint: 'products/details/$id');
     print("////////////////////////productsid");
     print(data);

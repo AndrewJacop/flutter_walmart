@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter_walmart/Features/Product/data/model/Product_model.dart';
+import 'package:flutter_walmart/features/Product/data/model/Product_model.dart';
 import 'package:flutter_walmart/common/data/repo/catego_repo.dart';
 import 'package:flutter_walmart/core/utils/api_sevice.dart';
 import 'package:flutter_walmart/core/utils/failures.dart';
@@ -11,8 +11,8 @@ class categoryiml implements CategoriesRepo {
   @override
   Future<Either<Failure, List<ProductsModel>>> fetchcategories(
       Map<String, dynamic> query) async {
-    var data = await apiService.get(
-        endPoint: 'products', queryParameters: query) as List<dynamic>;
+    var data =
+        await apiService.get(endPoint: 'products', queryParameters: query);
     print("data???????????????????????????");
     print(data);
     try {

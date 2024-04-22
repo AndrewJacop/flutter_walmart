@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_walmart/Features/auth/models/user_model.dart';
-import 'package:flutter_walmart/Features/home/persentation/home_view.dart';
+import 'package:flutter_walmart/features/auth/models/user_model.dart';
+import 'package:flutter_walmart/features/home/persentation/home_view.dart';
 import 'package:get/get.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 

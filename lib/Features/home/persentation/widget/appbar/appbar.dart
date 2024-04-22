@@ -1,20 +1,13 @@
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
-import 'package:flutter_walmart/Features/cart/presentation/cart.dart';
-import 'package:flutter_walmart/Features/home/persentation/widget/appbar/custom_head_body.dart';
+import 'package:flutter_walmart/features/cart/presentation/cart.dart';
+import 'package:flutter_walmart/features/home/persentation/widget/appbar/custom_head_body.dart';
 import 'package:flutter_walmart/core/utils/app_router.dart';
-=======
-import 'package:flutter_walmart/Features/auth/views/auth_screen.dart';
->>>>>>> andrew
 import 'package:flutter_walmart/core/utils/assets.dart';
 import 'package:flutter_walmart/core/utils/styles.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-<<<<<<< HEAD
 import 'package:get/get_core/src/get_main.dart';
 import 'package:http/http.dart';
-=======
->>>>>>> andrew
 
 class HeadAppBar extends StatelessWidget {
   const HeadAppBar({super.key});
@@ -56,20 +49,7 @@ class HeadAppBar extends StatelessWidget {
                 FontAwesomeIcons.cartShopping,
               ), // Change the icon
               onPressed: () {
-<<<<<<< HEAD
                 Get.toNamed(AppRouter.kCart);
-=======
-                // Add functionality for the shopping cart button
-                Get.bottomSheet(
-                  const AuthScreen(),
-                  isScrollControlled: true,
-                  clipBehavior: Clip.antiAlias,
-                  backgroundColor: Colors.transparent,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                );
->>>>>>> andrew
               },
             ),
           ),

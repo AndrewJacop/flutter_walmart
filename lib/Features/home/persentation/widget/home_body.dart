@@ -1,22 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_walmart/Features/Product/data/model/Product_model.dart';
-import 'package:flutter_walmart/Features/Product/logic/products_get.dart';
-import 'package:flutter_walmart/Features/Product/logic/subcategory_get.dart';
-import 'package:flutter_walmart/Features/cart/logic/get_cart.dart';
-import 'package:flutter_walmart/Features/home/data/model/ads_model.dart';
-import 'package:flutter_walmart/Features/home/logic/get_ads.dart';
-import 'package:flutter_walmart/Features/home/persentation/widget/item_banner_body_home.dart';
-<<<<<<< HEAD
-import 'package:flutter_walmart/common/data/category_get.dart';
-import 'package:flutter_walmart/common/widget/cardview.dart';
-import 'package:flutter_walmart/common/widget/category_section.dart';
-import 'package:flutter_walmart/common/widget/subcategory_section.dart';
-import 'package:get/get.dart';
-=======
 import 'package:flutter_walmart/common/widgets/cardview.dart';
+import 'package:flutter_walmart/common/widgets/category_section.dart';
 import 'package:flutter_walmart/common/widgets/subcategory_section.dart';
->>>>>>> andrew
+import 'package:flutter_walmart/features/Product/data/model/Product_model.dart';
+import 'package:flutter_walmart/features/Product/logic/products_get.dart';
+import 'package:flutter_walmart/features/Product/logic/subcategory_get.dart';
+import 'package:flutter_walmart/features/cart/logic/get_cart.dart';
+import 'package:flutter_walmart/features/home/data/model/ads_model.dart';
+import 'package:flutter_walmart/features/home/logic/get_ads.dart';
+import 'package:flutter_walmart/features/home/persentation/widget/item_banner_body_home.dart';
+import 'package:flutter_walmart/common/data/category_get.dart';
+import 'package:get/get.dart';
 
 class AdvertisingSection extends StatelessWidget {
   AdvertisingSection({super.key});
@@ -113,14 +108,13 @@ class AdvertisingSection extends StatelessWidget {
                     ],
                   ),
                 ),
-<<<<<<< HEAD
                 ItemBanner(
                   imgurl: adsList[6].imgLink!,
                   urlhref: adsList[6].href,
                   shopnow: adsList[6].title!,
                   aspectR: 16 / 5,
                 ),
-                CardView(),
+                const CardView(),
                 ItemBanner(
                   imgurl: adsList[8].imgLink!,
                   urlhref: adsList[8].href,
@@ -167,32 +161,6 @@ class AdvertisingSection extends StatelessWidget {
                       // Add some space between the columns
                       SizedBox(
                         height: 338,
-=======
-              ),
-              const ItemBanner(
-                imgurl:
-                    "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRN8OtMi6SZMqKxDGJ2r-DP-f_T0bQ8wT3PDt0LWJHER9pezAIx",
-                aspectR: 16 / 5,
-              ),
-              const CardView(),
-              const ItemBanner(
-                imgurl:
-                    "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSULkEU1cpVHmYdeDrcdtH5yqntFc3_iBZHdAb1KJt74WwPFcyI",
-                aspectR: 16 / 9,
-              ),
-              const ItemBanner(
-                imgurl:
-                    "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQu-hOmvL5GqezqHo9wD1oFUHFw6PLHQoK899qDDbfOwcQim-mW",
-                aspectR: 16 / 9,
-              ),
-              SizedBox(
-                height: 360,
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: SizedBox(
-                        height: 340,
->>>>>>> andrew
                         width: MediaQuery.of(context).size.width / 2.33,
                         child: Column(
                           children: [
@@ -213,7 +181,6 @@ class AdvertisingSection extends StatelessWidget {
                   subcategories: "Celebrate spring with outdoor fun",
                   productsitems: categoryList,
                 ),
-<<<<<<< HEAD
                 CardView2(),
                 ItemBanner(
                   aspectR: 11 / 9,
@@ -286,7 +253,7 @@ class AdvertisingSection extends StatelessWidget {
                   subcategories: "Get Most Bang For your buck",
                   productsitems: categoryList3,
                 ),
-                categorySection()
+                CategorySection()
                 // ItemBanner(
                 //   aspectR: 9 / 11,
                 //   imgurl: adsList[16].imgLink!,
@@ -295,16 +262,6 @@ class AdvertisingSection extends StatelessWidget {
               ],
             );
           }),
-=======
-              ),
-              const SubcategorySection(),
-              const ItemBanner(
-                  aspectR: 9 / 15,
-                  imgurl:
-                      "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQQj6HHUgPxiZk3IKoW3DlXyAZOjdgcFGLqss-WzBreRJK_35ow"),
-            ],
-          ),
->>>>>>> andrew
         ),
       ),
     );

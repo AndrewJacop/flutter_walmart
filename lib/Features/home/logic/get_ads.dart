@@ -1,6 +1,6 @@
-import 'package:flutter_walmart/Features/home/data/model/ads_model.dart';
-import 'package:flutter_walmart/Features/home/data/reop/ads_repo.dart';
-import 'package:flutter_walmart/Features/home/data/reop/ads_repo_impl.dart';
+import 'package:flutter_walmart/features/home/data/model/ads_model.dart';
+import 'package:flutter_walmart/features/home/data/reop/ads_repo.dart';
+import 'package:flutter_walmart/features/home/data/reop/ads_repo_impl.dart';
 import 'package:flutter_walmart/core/utils/api_sevice.dart';
 import 'package:get/get.dart';
 

@@ -30,34 +30,23 @@ environment:
 dependencies:
   cached_network_image: ^3.3.1
   carousel_slider: ^4.2.1
-  cupertino_icons: ^1.0.6
+  cupertino_icons: ^1.0.8
   dartz: ^0.10.1
-  dio: ^5.4.2+1
+  dio: ^5.4.3+1
   flutter:
     sdk: flutter
-<<<<<<< HEAD
-
-  font_awesome_flutter: ^10.7.0
-  get: ^4.6.6
-  go_router: ^13.2.0
-  http: ^1.2.1
-  url_launcher: ^6.2.5
-
-dev_dependencies:
-  flutter_lints: ^3.0.0
-=======
   flutter_rating_bar: ^4.0.1
   flutter_svg: ^2.0.10+1
   font_awesome_flutter: ^10.7.0
   get: ^4.6.6
   get_storage: ^2.1.1
-  go_router: ^13.2.0
+  go_router: ^13.2.4
   lottie: ^3.1.0
   smooth_page_indicator: ^1.1.0
   supabase: ^2.1.1
   supabase_flutter: ^2.5.1
   http: ^1.2.1
-  url_launcher: ^6.2.5
+  url_launcher: ^6.2.6
 
 dev_dependencies:
   # The "flutter_lints" package below contains a set of recommended lints to
@@ -66,7 +55,6 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^3.0.2
->>>>>>> andrew
   flutter_test:
     sdk: flutter
 

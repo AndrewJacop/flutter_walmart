@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_walmart/Features/services/views/widgets/circular_icon.dart';
+import 'package:flutter_walmart/features/services/views/widgets/circular_icon.dart';
 import 'package:flutter_walmart/core/utils/device_utils.dart';
 
 class VerticalCard extends StatelessWidget {

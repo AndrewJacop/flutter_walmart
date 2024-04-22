@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_walmart/Features/auth/views/auth_screen.dart';
-import 'package:flutter_walmart/Features/onboarding/controller/onboarding_controller.dart';
+import 'package:flutter_walmart/features/auth/views/auth_screen.dart';
+import 'package:flutter_walmart/features/onboarding/controller/onboarding_controller.dart';
 import 'package:flutter_walmart/common/widgets/custom_blue_button.dart';
 import 'package:flutter_walmart/core/utils/device_utils.dart';
 import 'package:get/get.dart';

@@ -1,7 +1,4 @@
-import 'package:flutter_walmart/Features/Product/data/model/Product_model.dart';
-import 'package:flutter_walmart/Features/Product/data/reop/product_repo.dart';
-import 'package:flutter_walmart/Features/Product/data/reop/product_repo_impl.dart';
-import 'package:flutter_walmart/Features/products_details/data/model/products_detailes.dart';
+import 'package:flutter_walmart/features/Product/data/model/Product_model.dart';
 import 'package:flutter_walmart/common/data/repo/catego_impl.dart';
 import 'package:flutter_walmart/common/data/repo/catego_repo.dart';
 

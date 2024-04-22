@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_walmart/Features/onboarding/view/onboarding_screen.dart';
+import 'package:flutter_walmart/features/onboarding/view/onboarding_screen.dart';
 import 'package:get/get.dart';
 
 class App extends StatelessWidget {

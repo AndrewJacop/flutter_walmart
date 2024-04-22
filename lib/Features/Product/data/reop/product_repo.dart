@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
-import 'package:flutter_walmart/Features/Product/data/model/Product_model.dart';
+import 'package:flutter_walmart/features/Product/data/model/Product_model.dart';
 
-import 'package:flutter_walmart/Features/products_details/data/model/products_detailes.dart';
+import 'package:flutter_walmart/features/products_details/data/model/products_detailes.dart';
 import 'package:flutter_walmart/core/utils/failures.dart';
 
 abstract class ProductsRepo {

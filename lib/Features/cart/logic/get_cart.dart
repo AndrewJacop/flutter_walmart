@@ -12,10 +12,10 @@
 //   }
 // }
 
-import 'package:flutter_walmart/Features/cart/data/cart_model.dart';
-import 'package:flutter_walmart/Features/cart/presentation/cart.dart';
+import 'package:flutter_walmart/features/cart/data/cart_model.dart';
+import 'package:flutter_walmart/features/cart/presentation/cart.dart';
 import 'package:get/get.dart';
-import 'package:flutter_walmart/Features/Product/data/model/Product_model.dart';
+import 'package:flutter_walmart/features/Product/data/model/Product_model.dart';
 
 // class CartController extends GetxController {
 //   var cartItems = [].obs;

@@ -1,26 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_walmart/Features/Product/data/model/Product_model.dart';
+import 'package:flutter_walmart/common/widgets/button_enmation.dart';
+import 'package:flutter_walmart/features/Product/data/model/Product_model.dart';
 
-import 'package:flutter_walmart/Features/Product/presentation/icon_image.dart';
-import 'package:flutter_walmart/Features/Product/presentation/image_products.dart';
-import 'package:flutter_walmart/Features/Product/presentation/products_price.dart';
-import 'package:flutter_walmart/Features/Product/presentation/rating.dart';
-import 'package:flutter_walmart/Features/Product/presentation/shipping.dart';
-import 'package:flutter_walmart/Features/cart/logic/get_cart.dart';
+import 'package:flutter_walmart/features/Product/presentation/icon_image.dart';
+import 'package:flutter_walmart/features/Product/presentation/image_products.dart';
+import 'package:flutter_walmart/features/Product/presentation/products_price.dart';
+import 'package:flutter_walmart/features/Product/presentation/rating.dart';
+import 'package:flutter_walmart/features/Product/presentation/shipping.dart';
+import 'package:flutter_walmart/features/cart/logic/get_cart.dart';
 
-import 'package:flutter_walmart/Features/products_details/data/model/products_detailes.dart';
-import 'package:flutter_walmart/common/widget/button_enmation.dart';
+import 'package:flutter_walmart/features/products_details/data/model/products_detailes.dart';
 import 'package:flutter_walmart/core/utils/styles.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 class Products extends StatefulWidget {
   const Products({
-    Key? key,
+    super.key,
     required this.productdetailes,
     required this.productsid,
-  }) : super(key: key);
+  });
   final ProductsDetailes productdetailes;
   final ProductsModel productsid;
 
@@ -75,7 +74,7 @@ class _ProductsState extends State<Products> {
                                 padding:
                                     const EdgeInsets.only(top: 20, left: 15),
                                 child: Text(
-                                  widget.productsid.title!,
+                                  widget.productsid.title,
                                   style: Styles.textStyle16.copyWith(
                                     decoration: TextDecoration.underline,
                                   ),
@@ -98,7 +97,7 @@ class _ProductsState extends State<Products> {
                                   reviewCount: 146,
                                 ),
                               ),
-                              SizedBox(height: 10),
+                              const SizedBox(height: 10),
                             ],
                           ),
                           Padding(
@@ -147,7 +146,7 @@ class _ProductsState extends State<Products> {
                               ),
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 20,
                           ),
                           Padding(
@@ -158,19 +157,19 @@ class _ProductsState extends State<Products> {
                               children: [
                                 Row(
                                   children: [
-                                    Icon(
+                                    const Icon(
                                       FontAwesomeIcons.briefcase,
                                       size: 15,
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       width: 5,
                                     ),
                                     Text('Sold by  ',
                                         style: Styles.textStyle16
                                             .copyWith(color: Colors.grey)),
-                                    Text(' Carote Official ',
+                                    const Text(' Carote Official ',
                                         style: Styles.textStyle16),
-                                    SizedBox(
+                                    const SizedBox(
                                       width: 5,
                                     ),
                                     Text(
@@ -179,27 +178,27 @@ class _ProductsState extends State<Products> {
                                           color: Colors.blue[800],
                                           fontWeight: FontWeight.w800),
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       width: 5,
                                     ),
-                                    Icon(
+                                    const Icon(
                                       FontAwesomeIcons.circleInfo,
                                       size: 20,
                                     ),
                                   ],
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 10,
                                 ),
                                 const Text("Fullfilled by walmart"),
-                                SizedBox(
+                                const SizedBox(
                                   height: 10,
                                 ),
                                 const RatingWidget(
                                   rating: 4.3,
                                   reviewCount: 5722,
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 10,
                                 ),
                                 Text(
@@ -208,22 +207,22 @@ class _ProductsState extends State<Products> {
                                     decoration: TextDecoration.underline,
                                   ),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 10,
                                 ),
                                 Row(
                                   children: [
-                                    Icon(
+                                    const Icon(
                                       FontAwesomeIcons.arrowRotateLeft,
                                       size: 20,
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       width: 5,
                                     ),
                                     Text('Free 90-day returns',
                                         style: Styles.textStyle14.copyWith(
                                             fontWeight: FontWeight.w600)),
-                                    SizedBox(
+                                    const SizedBox(
                                       width: 5,
                                     ),
                                     Text(
@@ -238,8 +237,8 @@ class _ProductsState extends State<Products> {
                             ),
                           ),
                           Container(
-                            padding: EdgeInsets.only(left: 12.0),
-                            child: Container(
+                            padding: const EdgeInsets.only(left: 12.0),
+                            child: const SizedBox(
                               height: 100,
                               child: Row(
                                 children: [
@@ -283,12 +282,12 @@ class _ProductsState extends State<Products> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
-                            Padding(
-                              padding: const EdgeInsets.symmetric(
+                            const Padding(
+                              padding: EdgeInsets.symmetric(
                                   horizontal: 5, vertical: 5),
                               child: Text("Estimated total 3 of 3 items"),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 10,
                             ),
                             Text(
@@ -296,10 +295,10 @@ class _ProductsState extends State<Products> {
                               style: Styles.textStyle18.copyWith(
                                   fontWeight: FontWeight.w400, fontSize: 14),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 10,
                             ),
-                            Text(
+                            const Text(
                               "Black .",
                               style: Styles.textStyle14,
                             ),
@@ -320,7 +319,7 @@ class _ProductsState extends State<Products> {
                                 ),
                                 width: MediaQuery.of(context).size.width / 2,
                                 height: 35,
-                                child: Center(
+                                child: const Center(
                                   child: Text(
                                     'Buy Now',
                                     style: Styles.textStyle14,
@@ -328,7 +327,7 @@ class _ProductsState extends State<Products> {
                                 ),
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 10,
                             ),
                             togleclick

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_walmart/Features/search/controllers/department_controller.dart';
-import 'package:flutter_walmart/Features/search/views/widgets/department_horizontal_tile.dart';
+import 'package:flutter_walmart/features/search/controllers/department_controller.dart';
+import 'package:flutter_walmart/features/search/views/widgets/department_horizontal_tile.dart';
 import 'package:get/get.dart';
 
 class SearchScreen extends StatelessWidget {

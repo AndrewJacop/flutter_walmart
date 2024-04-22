@@ -15,17 +15,12 @@ class ItemBanner extends StatelessWidget {
       {super.key,
       this.imgurl =
           "https://m.media-amazon.com/images/I/61wJXyIAKwL.__AC_SX300_SY300_QL70_FMwebp_.jpg",
-<<<<<<< HEAD
       required this.aspectR,
       this.onSale = false,
       this.originalPrice = "",
       this.salePrice = "",
       this.shopnow = "",
-      this.urlhref})
-      : super(key: key);
-=======
-      required this.aspectR});
->>>>>>> andrew
+      this.urlhref});
 
   @override
   Widget build(BuildContext context) {

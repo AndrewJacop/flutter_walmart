@@ -1,6 +1,6 @@
-import 'package:flutter_walmart/Features/Product/data/model/Product_model.dart';
-import 'package:flutter_walmart/Features/Product/data/reop/product_repo.dart';
-import 'package:flutter_walmart/Features/Product/data/reop/product_repo_impl.dart';
+import 'package:flutter_walmart/features/Product/data/model/Product_model.dart';
+import 'package:flutter_walmart/features/Product/data/reop/product_repo.dart';
+import 'package:flutter_walmart/features/Product/data/reop/product_repo_impl.dart';
 
 import 'package:flutter_walmart/core/utils/api_sevice.dart';
 import 'package:get/get.dart';

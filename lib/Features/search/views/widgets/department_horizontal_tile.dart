@@ -4,7 +4,12 @@ import 'package:flutter_walmart/common/widgets/custome_divider.dart';
 class DepartmentHorizontalTile extends StatelessWidget {
   const DepartmentHorizontalTile({
     super.key,
+    required this.title,
+    required this.imgLink,
   });
+
+  final String title;
+  final String imgLink;
 
   @override
   Widget build(BuildContext context) {
@@ -15,10 +20,9 @@ class DepartmentHorizontalTile extends StatelessWidget {
           ListTile(
             leading: ClipRRect(
               borderRadius: BorderRadius.circular(100),
-              child: Image.network(
-                  "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"),
+              child: Image.network(imgLink),
             ),
-            title: const Text("Department Name"),
+            title: Text(title),
             trailing: const Icon(Icons.arrow_right),
           ),
           const CustomDivider()

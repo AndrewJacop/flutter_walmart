@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_walmart/common/widgets/button_enmation.dart';
 
@@ -74,7 +75,7 @@ class Cart extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 15),
+                          padding: const EdgeInsets.symmetric(horizontal: 2),
                           child: Obx(() => Text(
                                 "Estimated total ${cartController.cartItems.length} of ${cartController.cartItems.length} items",
                               )),
@@ -545,10 +546,21 @@ class _PrpductsShowState extends State<PrpductsShow> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Image.network(
-                widget.product.images[0],
+              SizedBox(
                 width: 50,
+                child: CachedNetworkImage(
+                  placeholderFadeInDuration: Duration.zero,
+                  placeholder: (context, url) =>
+                      Center(child: const CircularProgressIndicator()),
+                  errorWidget: (context, url, error) => const Icon(Icons.error),
+                  imageUrl: widget.product.images[0],
+                  fit: BoxFit.fill,
+                ),
               ),
+              // Image.network(
+              //   widget.product.images[0],
+              //   width: 50,
+              // ),
               SizedBox(
                 width: MediaQuery.of(context).size.width / 2,
                 height: 70,

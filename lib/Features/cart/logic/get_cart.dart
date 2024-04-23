@@ -57,11 +57,11 @@ class CartController extends GetxController {
 
     if (existingProductIndex != -1) {
       cartItems[existingProductIndex].decrease();
+      sum.value -= double.parse(product.originalPrice);
     }
     if (cartItems[existingProductIndex].count.value == 0) {
       cartItems.removeAt(existingProductIndex);
     }
-    sum.value -= double.parse(product.originalPrice);
   }
   // removeFromSum(product);
 }

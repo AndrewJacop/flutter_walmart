@@ -23,7 +23,7 @@ class _HomeViewState extends State<HomeView> {
     MyListsScreen(), // Example placeholder for cart page
     const SearchScreen(),
     const ServicesScreen(), // Example placeholder for cart page
-    const AccountScreen(),
+    AccountScreen(),
     // Example placeholder for profile page
   ];
 

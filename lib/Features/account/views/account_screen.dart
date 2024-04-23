@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_walmart/features/auth/controllers/signin_controller.dart';
 import 'package:flutter_walmart/features/account/views/widgets/card_tile.dart';
 import 'package:flutter_walmart/features/services/views/widgets/horizontal_card.dart';
 import 'package:flutter_walmart/common/widgets/custome_divider.dart';
@@ -6,10 +7,12 @@ import 'package:flutter_walmart/common/widgets/feedback_section.dart';
 import 'package:flutter_walmart/common/widgets/shadowed_container.dart';
 import 'package:flutter_walmart/core/utils/device_utils.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 
 class AccountScreen extends StatelessWidget {
-  const AccountScreen({super.key});
-
+  AccountScreen({super.key});
+  final SignInController usersignin = Get.put(SignInController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,7 +26,7 @@ class AccountScreen extends StatelessWidget {
               color: Colors.blue,
               child: Column(
                 children: [
-                  Text("Hi, Yousef",
+                  Text("Hi , ${usersignin.user?.firstName ?? "guest"}",
                       style: Theme.of(context)
                           .textTheme
                           .displaySmall!

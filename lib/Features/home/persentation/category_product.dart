@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_walmart/features/Product/logic/products_get.dart';
 import 'package:flutter_walmart/common/widgets/button_enmation.dart';
@@ -53,10 +54,18 @@ class ProductsCategoryShow extends StatelessWidget {
             width: MediaQuery.of(context).size.width / 2.2,
             height: MediaQuery.of(context).size.height / 3,
             child: Stack(children: [
-              Image.network(
-                  height: MediaQuery.of(context).size.height,
-                  fit: BoxFit.fill,
-                  itemsproduct.images[0]),
+              // Image.network(
+              //     height: MediaQuery.of(context).size.height,
+              //     fit: BoxFit.fill,
+              //     itemsproduct.images[0]),
+              CachedNetworkImage(
+                placeholderFadeInDuration: Duration.zero,
+                placeholder: (context, url) =>
+                    Center(child: const CircularProgressIndicator()),
+                errorWidget: (context, url, error) => const Icon(Icons.error),
+                imageUrl: itemsproduct.images[0],
+                fit: BoxFit.fill,
+              ),
               Positioned(
                 top: -10,
                 left: -10,

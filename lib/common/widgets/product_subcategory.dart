@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_walmart/common/widgets/custom_button.dart';
 import 'package:flutter_walmart/features/Product/data/model/Product_model.dart';
@@ -31,12 +32,22 @@ class SubProductCard extends StatelessWidget {
               children: [
                 SizedBox(
                   child: AspectRatio(
-                    aspectRatio: 11 / 10,
-                    child: Image.network(
-                      product.images.isNotEmpty ? product.images[0] : "",
-                      fit: BoxFit.fill,
-                    ),
-                  ),
+                      aspectRatio: 11 / 10,
+                      child: CachedNetworkImage(
+                        placeholderFadeInDuration: Duration.zero,
+                        placeholder: (context, url) =>
+                            Center(child: const CircularProgressIndicator()),
+                        errorWidget: (context, url, error) =>
+                            const Icon(Icons.error),
+                        imageUrl:
+                            product.images.isNotEmpty ? product.images[0] : "",
+                        fit: BoxFit.fill,
+                      )
+                      //  Image.network(
+                      //   product.images.isNotEmpty ? product.images[0] : "",
+                      //   fit: BoxFit.fill,
+                      // ),
+                      ),
                 ),
                 const SizedBox(height: 8.0),
                 Text(
@@ -67,9 +78,6 @@ class SubProductCard extends StatelessWidget {
 
                     final ProductsDetailes productDetails =
                         productsController.productsid.value;
-
-                    print("////////////////////////productsid");
-                    print(productDetails);
 
                     showModalBottomSheet(
                       context: context,

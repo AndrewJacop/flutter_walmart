@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_walmart/features/auth/controllers/signin_controller.dart';
 
 import 'package:flutter_walmart/features/cart/logic/get_cart.dart';
 
@@ -11,6 +12,8 @@ import 'package:get/get.dart';
 
 class HeadAppBar extends StatelessWidget {
   final CartController cartcontroller = Get.find<CartController>();
+  final SignInController usersignin = Get.put(SignInController());
+
   HeadAppBar({super.key});
 
   @override
@@ -22,10 +25,10 @@ class HeadAppBar extends StatelessWidget {
       height: 70,
       child: Row(
         children: [
-          const Padding(
+          Padding(
             padding: EdgeInsets.all(8.0),
             child: Text(
-              "Hi, Yousef",
+              "Hi , ${usersignin.user?.firstName ?? "guest"}",
               style: Styles.textStyle14,
             ),
           ),
@@ -56,13 +59,18 @@ class HeadAppBar extends StatelessWidget {
               ),
             ),
             Positioned(
-              top: -2,
-              left: 7,
+              top: 1,
+              left: 40,
               child: Obx(() {
                 return cartcontroller.cartItems.isNotEmpty
-                    ? Text(
-                        "${cartcontroller.cartItems.length}",
-                        style: Styles.textStyle18.copyWith(color: Colors.red),
+                    ? CircleAvatar(
+                        radius: 10,
+                        backgroundColor: Colors.yellow,
+                        child: Text(
+                          "${cartcontroller.cartItems.length}",
+                          style:
+                              Styles.textStyle14.copyWith(color: Colors.black),
+                        ),
                       )
                     : Container();
               }),

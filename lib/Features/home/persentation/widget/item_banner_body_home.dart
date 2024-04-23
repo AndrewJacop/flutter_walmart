@@ -1,5 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_walmart/common/data/category_get.dart';
+import 'package:flutter_walmart/core/utils/app_router.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ItemBanner extends StatelessWidget {
@@ -25,7 +29,17 @@ class ItemBanner extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => launchURL(urlhref!),
+      onTap: () async {
+        final Categelectronic = Get.put(CategoriesController());
+        await Categelectronic.fetchcategories({"title": "$urlhref"});
+
+        final List productlist = Categelectronic.productslist.value;
+
+        // await Get.to(ProductView(
+        //   itemsview: productlist,
+        // ));
+        await Get.toNamed(AppRouter.kproductsview, arguments: productlist);
+      },
       child: Card(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10.0),

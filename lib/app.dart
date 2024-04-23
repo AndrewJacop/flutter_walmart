@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_walmart/core/utils/app_router.dart';
 import 'package:flutter_walmart/features/onboarding/view/onboarding_screen.dart';
 import 'package:get/get.dart';
 
@@ -7,11 +8,12 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const GetMaterialApp(
+    return GetMaterialApp(
       themeMode: ThemeMode.system,
       debugShowCheckedModeBanner: false,
       // initialBinding: GeneralBindings(),
-      home: OnBoardingScreen(),
+      initialRoute: AppRouter.kHomeView, // Set initial route
+      getPages: AppRouter.routes,
     );
   }
 }

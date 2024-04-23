@@ -20,7 +20,7 @@ class _HomeViewState extends State<HomeView> {
   static final List<Widget> _widgetOptions = <Widget>[
     // Replace this with your actual home content widget
     AdvertisingSection(), // Example placeholder for search page
-    const MyListsScreen(), // Example placeholder for cart page
+    MyListsScreen(), // Example placeholder for cart page
     const SearchScreen(),
     const ServicesScreen(), // Example placeholder for cart page
     const AccountScreen(),
@@ -44,44 +44,46 @@ class _HomeViewState extends State<HomeView> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        children: [
-          // CustomAppBar(),
-          CustomAppBar(),
-          Expanded(
-            child: _widgetOptions.elementAt(_selectedIndex),
-          ),
-        ],
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _selectedIndex,
-        selectedItemColor: Colors.blue,
-        unselectedItemColor: Colors.black,
-        onTap: _onItemTapped,
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            // ignore: deprecated_member_use
-            icon: FaIcon(FontAwesomeIcons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: FaIcon(FontAwesomeIcons.shoppingCart),
-            label: 'My files',
-          ),
-          BottomNavigationBarItem(
-            icon: FaIcon(FontAwesomeIcons.search),
-            label: 'Search',
-          ),
-          BottomNavigationBarItem(
-            icon: FaIcon(FontAwesomeIcons.user),
-            label: 'Services',
-          ),
-          BottomNavigationBarItem(
-            icon: FaIcon(FontAwesomeIcons.userCircle),
-            label: 'Account',
-          ),
-        ],
+    return SafeArea(
+      child: Scaffold(
+        body: Column(
+          children: [
+            // CustomAppBar(),
+            CustomAppBar(),
+            Expanded(
+              child: _widgetOptions.elementAt(_selectedIndex),
+            ),
+          ],
+        ),
+        bottomNavigationBar: BottomNavigationBar(
+          currentIndex: _selectedIndex,
+          selectedItemColor: Colors.blue,
+          unselectedItemColor: Colors.black,
+          onTap: _onItemTapped,
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              // ignore: deprecated_member_use
+              icon: FaIcon(FontAwesomeIcons.home),
+              label: 'Home',
+            ),
+            BottomNavigationBarItem(
+              icon: FaIcon(FontAwesomeIcons.shoppingCart),
+              label: 'My files',
+            ),
+            BottomNavigationBarItem(
+              icon: FaIcon(FontAwesomeIcons.search),
+              label: 'Search',
+            ),
+            BottomNavigationBarItem(
+              icon: FaIcon(FontAwesomeIcons.user),
+              label: 'Services',
+            ),
+            BottomNavigationBarItem(
+              icon: FaIcon(FontAwesomeIcons.userCircle),
+              label: 'Account',
+            ),
+          ],
+        ),
       ),
     );
   }

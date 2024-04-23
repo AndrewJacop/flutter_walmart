@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_walmart/features/cart/presentation/cart.dart';
-import 'package:flutter_walmart/features/home/persentation/widget/appbar/custom_head_body.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+
+import 'package:flutter_walmart/features/cart/logic/get_cart.dart';
+
 import 'package:flutter_walmart/core/utils/app_router.dart';
 import 'package:flutter_walmart/core/utils/assets.dart';
 import 'package:flutter_walmart/core/utils/styles.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:http/http.dart';
 
 class HeadAppBar extends StatelessWidget {
-  const HeadAppBar({super.key});
+  final CartController cartcontroller = Get.find<CartController>();
+  HeadAppBar({super.key});
 
   @override
   // Adjust the height as needed
@@ -33,26 +34,40 @@ class HeadAppBar extends StatelessWidget {
           ),
           // Adjust the width of the leading widget
           Center(
-            child: Image.asset(
-              AssetsData.logo,
-              width: 60, // Adjust the width of the image
+            child: SvgPicture.asset(
+              "assets/svg/walmart_logo_spark.svg",
+              width: 40, // Adjust the width of the image
             ),
           ),
           const Spacer(
             flex: 5,
           ),
           // Add space between the image and actions
-          Padding(
-            padding: const EdgeInsets.only(left: 10, right: 13),
-            child: IconButton(
-              icon: const FaIcon(
-                FontAwesomeIcons.cartShopping,
-              ), // Change the icon
-              onPressed: () {
-                Get.toNamed(AppRouter.kCart);
-              },
+          Stack(children: [
+            Padding(
+              padding: const EdgeInsets.only(left: 5, right: 13),
+              child: IconButton(
+                icon: const FaIcon(
+                  FontAwesomeIcons.cartShopping,
+                ), // Change the icon
+                onPressed: () {
+                  Get.toNamed(AppRouter.kCart);
+                },
+              ),
             ),
-          ),
+            Positioned(
+              top: -2,
+              left: 7,
+              child: Obx(() {
+                return cartcontroller.cartItems.isNotEmpty
+                    ? Text(
+                        "${cartcontroller.cartItems.length}",
+                        style: Styles.textStyle18.copyWith(color: Colors.red),
+                      )
+                    : Container();
+              }),
+            ),
+          ]),
         ],
       ),
     );

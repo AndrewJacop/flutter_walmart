@@ -4,11 +4,11 @@ import 'package:flutter_walmart/features/mylists/view/registries_tab.dart';
 import 'package:flutter_walmart/features/mylists/view/reorder_tab.dart';
 
 class MyListsScreen extends StatelessWidget {
-  const MyListsScreen({super.key});
+  MyListsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const DefaultTabController(
+    return DefaultTabController(
         initialIndex: 1,
         length: 3,
         child: Scaffold(

@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_walmart/common/widgets/cardview.dart';
 import 'package:flutter_walmart/common/widgets/category_section.dart';
+import 'package:flutter_walmart/common/widgets/feedback_section.dart';
 import 'package:flutter_walmart/common/widgets/subcategory_section.dart';
 import 'package:flutter_walmart/features/Product/data/model/Product_model.dart';
 import 'package:flutter_walmart/features/Product/logic/products_get.dart';
@@ -56,7 +57,7 @@ class AdvertisingSection extends StatelessWidget {
                 ItemBanner(
                   aspectR: 11 / 7,
                   imgurl: adsList[0].imgLink!,
-                  urlhref: adsList[0].href,
+                  urlhref: "de",
                   shopnow: adsList[0].title!,
                 ),
                 SizedBox(
@@ -74,13 +75,13 @@ class AdvertisingSection extends StatelessWidget {
                               ItemBanner(
                                 aspectR: 16 / 11,
                                 imgurl: adsList[1].imgLink!,
-                                urlhref: adsList[1].href,
+                                urlhref: "l",
                                 shopnow: adsList[1].title!,
                               ),
                               ItemBanner(
                                 aspectR: 16 / 13,
                                 imgurl: adsList[2].imgLink!,
-                                urlhref: adsList[2].href,
+                                urlhref: "me",
                                 shopnow: adsList[2].title!,
                               ),
                               // Add some space between items
@@ -99,7 +100,7 @@ class AdvertisingSection extends StatelessWidget {
                             ItemBanner(
                               aspectR: 9 / 17,
                               imgurl: adsList[4].imgLink!,
-                              urlhref: adsList[4].href,
+                              urlhref: "he",
                               shopnow: adsList[4].title!,
                             )
                           ],
@@ -110,20 +111,20 @@ class AdvertisingSection extends StatelessWidget {
                 ),
                 ItemBanner(
                   imgurl: adsList[6].imgLink!,
-                  urlhref: adsList[6].href,
+                  urlhref: "jk",
                   shopnow: adsList[6].title!,
                   aspectR: 16 / 5,
                 ),
                 const CardView(),
                 ItemBanner(
                   imgurl: adsList[8].imgLink!,
-                  urlhref: adsList[8].href,
+                  urlhref: "ad",
                   shopnow: adsList[8].title!,
                   aspectR: 16 / 9,
                 ),
                 ItemBanner(
                   imgurl: adsList[3].imgLink!,
-                  urlhref: adsList[3].href,
+                  urlhref: "yo",
                   shopnow: adsList[3].title!,
                   aspectR: 16 / 9,
                 ),
@@ -142,13 +143,13 @@ class AdvertisingSection extends StatelessWidget {
                               ItemBanner(
                                 aspectR: 16 / 11,
                                 imgurl: adsList[5].imgLink!,
-                                urlhref: adsList[5].href,
+                                urlhref: "sp",
                                 shopnow: adsList[5].title!,
                               ),
                               ItemBanner(
                                 aspectR: 16 / 13,
                                 imgurl: adsList[9].imgLink!,
-                                urlhref: adsList[9].href,
+                                urlhref: "io",
                                 shopnow: adsList[9].title!,
                               ),
                               // Add some space between items
@@ -167,7 +168,7 @@ class AdvertisingSection extends StatelessWidget {
                             ItemBanner(
                               aspectR: 9 / 17,
                               imgurl: adsList[7].imgLink!,
-                              urlhref: adsList[7].href,
+                              urlhref: "io",
                               shopnow: adsList[7].title!,
                             ),
                           ],
@@ -185,19 +186,19 @@ class AdvertisingSection extends StatelessWidget {
                 ItemBanner(
                   aspectR: 11 / 9,
                   imgurl: adsList[10].imgLink!,
-                  urlhref: adsList[10].href,
+                  urlhref: "ca",
                   shopnow: adsList[10].title!,
                 ),
                 ItemBanner(
                   aspectR: 16 / 9,
                   imgurl: adsList[11].imgLink!,
-                  urlhref: adsList[11].href,
+                  urlhref: "la",
                   shopnow: adsList[11].title!,
                 ),
                 ItemBanner(
                   aspectR: 16 / 11,
                   imgurl: adsList[12].imgLink!,
-                  urlhref: adsList[12].href,
+                  urlhref: "op",
                   shopnow: adsList[12].title!,
                 ),
                 SizedBox(
@@ -213,7 +214,7 @@ class AdvertisingSection extends StatelessWidget {
                             ItemBanner(
                               aspectR: 9 / 17,
                               imgurl: adsList[13].imgLink!,
-                              urlhref: adsList[13].href,
+                              urlhref: "io",
                               shopnow: adsList[13].title!,
                             ),
                           ],
@@ -228,7 +229,7 @@ class AdvertisingSection extends StatelessWidget {
                             ItemBanner(
                               aspectR: 9 / 17,
                               imgurl: adsList[14].imgLink!,
-                              urlhref: adsList[14].href,
+                              urlhref: "cv",
                               shopnow: adsList[14].title!,
                             ),
                           ],
@@ -245,7 +246,7 @@ class AdvertisingSection extends StatelessWidget {
                 ItemBanner(
                   aspectR: 9 / 12,
                   imgurl: adsList[15].imgLink!,
-                  urlhref: adsList[15].href,
+                  urlhref: "op",
                   shopnow: adsList[15].title!,
                 ),
                 SubcategorySection(
@@ -253,7 +254,8 @@ class AdvertisingSection extends StatelessWidget {
                   subcategories: "Get Most Bang For your buck",
                   productsitems: categoryList3,
                 ),
-                CategorySection()
+                CategorySection(),
+                FeedbackSection()
                 // ItemBanner(
                 //   aspectR: 9 / 11,
                 //   imgurl: adsList[16].imgLink!,

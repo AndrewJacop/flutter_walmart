@@ -6,7 +6,6 @@ import 'package:flutter_walmart/common/data/category_get.dart';
 import 'package:flutter_walmart/core/utils/app_router.dart';
 import 'package:flutter_walmart/core/utils/styles.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 class CategorySection extends StatelessWidget {
   const CategorySection({

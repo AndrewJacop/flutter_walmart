@@ -26,7 +26,7 @@ class CustomAppBar extends StatelessWidget {
       height: 150,
       color: Colors.blue,
       child: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
-        const HeadAppBar(),
+        HeadAppBar(),
         const CustomSearch(),
         const SizedBox(height: 3),
         Row(

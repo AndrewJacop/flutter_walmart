@@ -1,3 +1,5 @@
+import 'package:flutter_walmart/Features/onboarding/view/onboarding_screen.dart';
+import 'package:flutter_walmart/Features/onboarding/view/widgets/onboarding_page.dart';
 import 'package:flutter_walmart/features/Product/presentation/products.dart';
 import 'package:flutter_walmart/features/cart/presentation/cart.dart';
 import 'package:flutter_walmart/features/home/persentation/category_product.dart';
@@ -12,7 +14,7 @@ abstract class AppRouter {
   static final List<GetPage> routes = [
     GetPage(
       name: kHomeView,
-      page: () => const HomeView(),
+      page: () => const OnBoardingScreen(),
     ),
     GetPage(
       name: kCart,
@@ -21,7 +23,7 @@ abstract class AppRouter {
     GetPage(
       name: kproductsview,
       page: () => ProductView(
-        itemsview: const [],
+        itemsview: [],
       ),
     ),
     // Define other routes if needed

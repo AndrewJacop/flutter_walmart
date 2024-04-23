@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_walmart/features/Product/logic/products_get.dart';
 import 'package:flutter_walmart/common/widgets/button_enmation.dart';
 import 'package:flutter_walmart/features/Product/data/model/Product_model.dart';
 import 'package:flutter_walmart/features/Product/presentation/rating.dart';
@@ -38,6 +39,7 @@ class ProductView extends StatelessWidget {
 
 class ProductsCategoryShow extends StatelessWidget {
   ProductsCategoryShow({super.key, required this.itemsproduct});
+  final ProductsController favoriteController = Get.put(ProductsController());
   final ProductsModel itemsproduct;
   final CategoriesController controller = Get.find<CategoriesController>();
   @override
@@ -50,10 +52,29 @@ class ProductsCategoryShow extends StatelessWidget {
           SizedBox(
             width: MediaQuery.of(context).size.width / 2.2,
             height: MediaQuery.of(context).size.height / 3,
-            child: Image.network(
-                height: MediaQuery.of(context).size.height,
-                fit: BoxFit.fill,
-                itemsproduct.images[0]),
+            child: Stack(children: [
+              Image.network(
+                  height: MediaQuery.of(context).size.height,
+                  fit: BoxFit.fill,
+                  itemsproduct.images[0]),
+              Positioned(
+                top: -10,
+                left: -10,
+                child: Obx(() => IconButton(
+                      icon: Icon(
+                        itemsproduct.myitems.isTrue
+                            ? Icons.favorite
+                            : Icons.favorite_border,
+                        color: itemsproduct.myitems.isTrue
+                            ? Colors.red
+                            : Colors.grey,
+                      ),
+                      onPressed: () {
+                        favoriteController.addmylist(itemsproduct);
+                      },
+                    )),
+              ),
+            ]),
           ),
           SizedBox(
             height: MediaQuery.of(context).size.height / 3,

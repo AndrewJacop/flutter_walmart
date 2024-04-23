@@ -26,7 +26,6 @@
 //     );
 //   }
 // }
-import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_walmart/Features/search/controllers/department_controller.dart';
@@ -40,7 +39,7 @@ class SearchScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(DepartmentController());
+    final depController = Get.put(DepartmentController());
     final searchcontroller = Get.put(SearchContList());
 
     return Scaffold(
@@ -49,36 +48,43 @@ class SearchScreen extends StatelessWidget {
         title: Text("All Departments",
             style: Theme.of(context).textTheme.headlineSmall),
       ),
-      body: Obx(() {
-        if (searchcontroller.searchslist.isNotEmpty) {
-          return ListView.builder(
-            itemCount: searchcontroller.searchslist.length,
-            itemBuilder: (_, index) {
-              final product = searchcontroller.searchslist[index];
-              // Use the product details to build your UI widgets
-              return DepartmentHorizontalTile(
-                title: product.title,
-                imgLink: product.images[0],
-              );
-            },
-          );
-          }
-          
-        } else {
-          return ListView.builder(
-            itemCount: DepartmentController.departmentList.length,
-            itemBuilder: (_, index) {
-              final product = searchController.searchslist[index];
-              // Use the product details to build your UI widgets
-              return DepartmentHorizontalTile(
-                title: product.title,
-                imgLink: product.imgLink,
-              );
-            },
-          );
-        }
-      
-      
+      body: Obx(() => searchcontroller.searchslist.isEmpty
+          ? ListView.builder(
+              itemCount: depController.departmentList.length,
+              itemBuilder: (_, index) {
+                final dep = depController.departmentList[index];
+                // Use the product details to build your UI widgets
+                return DepartmentHorizontalTile(
+                  title: dep.title,
+                  imgLink: dep.imgLink,
+                );
+              },
+            )
+          : ListView.builder(
+              itemCount: searchcontroller.searchslist.length,
+              itemBuilder: (_, index) {
+                final product = searchcontroller.searchslist[index];
+                // Use the product details to build your UI widgets
+                return DepartmentHorizontalTile(
+                  title: product.title,
+                  imgLink: product.images[0],
+                );
+              },
+            )),
     );
   }
 }
+
+
+
+              /// return ListView.builder(
+              ///   itemCount: DepartmentController.departmentList.length,
+              ///   itemBuilder: (_, index) {
+              ///     final product = searchController.searchslist[index];
+              ///     // Use the product details to build your UI widgets
+              ///     return DepartmentHorizontalTile(
+              ///       title: product.title,
+              ///       imgLink: product.imgLink,
+              ///     );
+              ///   },
+              /// );

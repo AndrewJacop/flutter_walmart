@@ -16,17 +16,13 @@ abstract class AppRouter {
   static const kproductsview = '/ProductView';
   static const ksearch = '/SearchScreen';
   static const kallsearch = '/SearchAllScreen';
-  static const klogin = '/AuthScreen';
 
   static final List<GetPage> routes = [
     GetPage(
       name: kHomeView,
       page: () => const OnBoardingScreen(),
     ),
-    GetPage(
-      name: klogin,
-      page: () => AuthScreen(),
-    ),
+
     GetPage(
       name: ksearch,
       page: () => SearchScreen(),

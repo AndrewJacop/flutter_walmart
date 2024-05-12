@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:flutter_walmart/app.dart';
+import 'package:flutter_walmart/core/utils/api_keys.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
+  Stripe.publishableKey = ApiKeys.puplishableKey;
   await Supabase.initialize(
     url: 'https://cexmgptxbtlgbmidmdxf.supabase.co',
     anonKey:

@@ -1,5 +1,12 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
+import 'package:flutter_walmart/Features/payment/data/repos/checkout_repo.dart';
+import 'package:flutter_walmart/Features/payment/data/repos/checkout_repo_impl.dart';
+import 'package:flutter_walmart/Features/payment/presentation/manger/cubit/payment_get.dart';
+import 'package:flutter_walmart/Features/payment/presentation/views/widgets/payment_methods_bottom_sheet.dart';
 import 'package:flutter_walmart/common/widgets/button_enmation.dart';
 
 import 'package:flutter_walmart/features/Product/data/model/Product_model.dart';
@@ -106,7 +113,20 @@ class Cart extends StatelessWidget {
                       ],
                     ),
                     InkWell(
-                      onTap: () {
+                      onTap: () async {
+                        showModalBottomSheet(
+                            context: context,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(16)),
+                            builder: (context) {
+                              final PaymentController paymentController =
+                                  Get.put(
+                                      PaymentController(CheckoutRepoImpl()));
+                              paymentController.sumamount =
+                                  cartController.sum.value.toString();
+
+                              return const PaymentMethodsBottomSheet();
+                            });
                         // Add your checkout logic here
                       },
                       child: Container(

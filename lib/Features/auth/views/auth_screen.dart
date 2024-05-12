@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_walmart/Features/auth/views/regester.dart';
 import 'package:flutter_walmart/features/auth/controllers/signin_controller.dart';
 import 'package:flutter_walmart/features/auth/views/login_screen.dart';
 import 'package:flutter_walmart/common/widgets/custom_blue_button.dart';
@@ -76,11 +77,19 @@ class AuthScreen extends StatelessWidget {
                   title: "Continue",
 
                   /// onPress: () => Get.to(() => const HomeView()),
-                  onPress: () => Get.to(
-                      () => const LoginScreen(
-                            email: "andrewjacop@email.com",
-                          ),
-                      transition: Transition.downToUp),
+                  onPress: () async {
+                    // Check if the email exists in the database
+                    await controller.signMeIn();
+
+                    // If user exists, navigate to login screen; otherwise, navigate to registration screen
+                    if (controller.user != null) {
+                      Get.to(() => LoginScreen(email: controller.email.text),
+                          transition: Transition.downToUp);
+                    } else {
+                      Get.to(() => RegisterScreen(email: controller.email.text),
+                          transition: Transition.downToUp);
+                    }
+                  },
                 ),
               ),
               const Text(

@@ -14,9 +14,12 @@
 // }
 import 'dart:convert';
 
+import 'package:dio/dio.dart';
+
 import 'package:http/http.dart' as http;
 
 class ApiService {
+  final Dio dio = Dio();
   final _baseUrl = 'http://10.0.2.2:3000/api/';
 
   Future<List<dynamic>> get(
@@ -47,6 +50,22 @@ class ApiService {
     // If the server returns a 200 OK response, parse the JSON and return it
 
     return responseBody;
+  }
+
+  Future<Response> post(
+      {required body,
+      required String url,
+      required String token,
+      Map<String, String>? headers,
+      String? contentType}) async {
+    var response = await dio.post(url,
+        data: body,
+        options: Options(
+          contentType: contentType,
+          headers: headers ?? {'Authorization': "Bearer $token"},
+        ));
+
+    return response;
   }
 }
 // Future<void> fetchAdsData() async {

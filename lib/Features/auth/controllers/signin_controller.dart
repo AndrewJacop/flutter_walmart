@@ -9,6 +9,10 @@ class SignInController extends GetxController {
 
   final email = TextEditingController();
   final pass = TextEditingController();
+  final firstName = TextEditingController();
+  final lastName = TextEditingController();
+  // final phone = TextEditingController();
+
   UserModel? user;
 
   Future<void> signMeIn() async {
@@ -19,6 +23,8 @@ class SignInController extends GetxController {
           .from('users')
           .select()
           .match({'email': email.text, 'password': pass.text});
+      print("????????????????????/supabase");
+      print(supabase);
 
       user = UserModel.fromMap(data[0]);
 
@@ -27,6 +33,43 @@ class SignInController extends GetxController {
       Get.to(() => const HomeView());
     } catch (e) {
       Get.snackbar("X", "bad credentials");
+    }
+  }
+
+  Future<void> signupme() async {
+    final supabase = Supabase.instance.client;
+
+    try {
+      final data = await supabase.from('users').upsert(
+        {
+          'email': email.text,
+          'password': pass.text,
+          'firstName': firstName.text,
+          'lastName': lastName.text,
+          'id': "",
+          'phoneNumber': "024568796",
+
+          'isAdmin': false,
+          'isSeller': false,
+          'address': [],
+          'paymentMethod': [],
+          'userListsIds': [],
+          'cart': [],
+
+          // 'phone': phone.text,
+        },
+      );
+
+      user = UserModel.fromMap(data.data);
+      print("?????????????????user??????????????");
+      print(user);
+      Get.snackbar("Welcome!", "Signed up successfully.");
+
+      Get.to(() => const HomeView());
+    } catch (e) {
+      Get.snackbar("X", "Sign up failed. Please try again.");
+      print("???????????????????????????????");
+      print(e);
     }
   }
 }
